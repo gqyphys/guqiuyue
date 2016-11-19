@@ -1,0 +1,19 @@
+{
+  "name": "guqiuyue",
+  "version": "1.0.0",
+  "description": "This is guqiuyue's personal website.",
+  "main": "index.js",
+  "scripts": {
+    "test": "gqyphys"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gqyphys/guqiuyue.git"
+  },
+  "author": "guqiuyue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gqyphys/guqiuyue/issues"
+  },
+  "homepage": "https://github.com/gqyphys/guqiuyue#readme"
+}
