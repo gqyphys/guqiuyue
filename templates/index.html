@@ -46,8 +46,8 @@ $(document).ready(function() {
     $("#volume_minus").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
-        console.log(v.volume);
-        if(0.1<=parseInt(v.volume)<=1){
+        console.log(parseInt(v.volume));
+        if(0.1<parseInt(v.volume)<=1){
             v.volume-=0.1;
         }
         // else if(0.1<=v.volume<0.2){
