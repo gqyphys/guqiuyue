@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 
+{% block style %}
+{{ super() }}
+<style>
+.vide0-control-bar{background-color: #ccc;height: 50px;}
+.btn{display: inline-block;}
+</style>
+{% endblock %}
+
 {% block body %}
     {{ super() }}
     <video src="http://file.kaoshixing.com/database/1/2016119/195004964730.mp4">
         您的浏览器不支持 video 标签
     </video>
-    <button class="btn"></button>
+    <div class="video-control-bar">
+        <button class="btn btn-default" id="play">播放</button>
+        <button class="btn btn-default" id="pause">暂停</button>
+        <button class="btn btn-default" id="volume_plus">音量＋</button>
+        <button class="btn btn-default" id="volume_minus">音量－</button>
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -13,11 +26,28 @@
 <script>
 $(document).ready(function() {
     var v = document.getElementsByTagName("video")[0];
-    $(".btn").click(function(e) {
+    $("#play").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
         v.play();
     });
+    $("#pause").click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        v.pause();
+    });
+    $("#play").click(function(e) {
+        e.stopPropagation();
+		e.preventDefault();
+        v.volume+=0.1;
+    });
+    $("#play").click(function(e) {
+        e.stopPropagation();
+		e.preventDefault();
+        v.volume-=0.1;
+    });
+
+
 });
 </script>
 {% endblock %}
