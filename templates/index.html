@@ -10,7 +10,7 @@
 
 {% block body %}
     {{ super() }}
-    <video src="http://oss.kaoshixing.com/database/1/20161129/192936627776.mp4">
+    <video src="http://oss.kaoshixing.com/database/1/20161129/192936627776.mp4#t=,60">
         您的浏览器不支持 video 标签
     </video>
     <div class="video-control-bar">
@@ -39,19 +39,21 @@ $(document).ready(function() {
     $("#play").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
-        console.log(v.volume);
-        // v.volume+=0.1;
+        if(v.volume<1){
+            v.volume+=0.1;
+        }
     });
     $("#play").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
-        console.log(v.volume)
-        // v.volume-=0.1;
+        if(v.volume>0){
+            v.volume-=0.1;
+        }
     });
-    console.log(v.seekable.start(5));  // Returns the starting time (in seconds)
+    // console.log(v.seekable.start(5));  // Returns the starting time (in seconds)
     // v.seekable.end(0);    // Returns the ending time (in seconds)
     // v.currentTime = 122; // Seek to 122 seconds
-    console.log(v.played.end(10));     // Returns the number of seconds the browser has played
+    // console.log(v.played.end(10));     // Returns the number of seconds the browser has played
 
 
 });
