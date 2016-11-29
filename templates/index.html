@@ -36,14 +36,14 @@ $(document).ready(function() {
         e.preventDefault();
         v.pause();
     });
-    $("#play").click(function(e) {
+    $("#volume_plus").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
         if(v.volume<1){
             v.volume+=0.1;
         }
     });
-    $("#play").click(function(e) {
+    $("#volume_minus").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
         if(v.volume>0){
