@@ -39,14 +39,14 @@ $(document).ready(function() {
     $("#volume_plus").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
-        if(v.volume<1){
+        if(0<=v.volume<1){
             v.volume+=0.1;
         }
     });
     $("#volume_minus").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
-        if(v.volume>0){
+        if(0<v.volume<=1){
             v.volume-=0.1;
         }
     });
