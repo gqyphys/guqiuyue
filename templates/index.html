@@ -3,7 +3,7 @@
 {% block style %}
 {{ super() }}
 <style>
-.video-control-bar{background-color: #ccc;height: 50px;width: 640px;}
+.video-control-bar{background-color: #ccc;height: 34px;width: 640px;}
 .btn{display: inline-block;}
 </style>
 {% endblock %}
@@ -48,6 +48,10 @@ $(document).ready(function() {
         console.log(v.volume)
         // v.volume-=0.1;
     });
+    console.log(v.seekable.start(0));  // Returns the starting time (in seconds)
+    // v.seekable.end(0);    // Returns the ending time (in seconds)
+    // v.currentTime = 122; // Seek to 122 seconds
+    v.played.end(0);      // Returns the number of seconds the browser has played
 
 
 });
