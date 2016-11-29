@@ -47,8 +47,10 @@ $(document).ready(function() {
         e.stopPropagation();
 		e.preventDefault();
         console.log(v.volume);
-        if(0.1<=v.volume<=1){
+        if(0.2<=v.volume<=1){
             v.volume-=0.1;
+        }else if(0.1<=v.volume<0.2){
+            v.volume=0;
         }
     });
     // console.log(v.seekable.start(5));  // Returns the starting time (in seconds)
