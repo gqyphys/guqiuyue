@@ -2,7 +2,22 @@
 
 {% block body %}
     {{ super() }}
-    <video src="http://file.kaoshixing.com/database/1/2016119/195004964730.mp4" controls="controls">
+    <video src="http://file.kaoshixing.com/database/1/2016119/195004964730.mp4">
         您的浏览器不支持 video 标签
     </video>
+    <button class="btn"></button>
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script>
+$(document).ready(function() {
+    var v = document.getElementsByTagName("video")[0];
+    $(".btn").click(function(e) {
+        e.stopPropagation();
+		e.preventDefault();
+        v.play();
+    });
+});
+</script>
 {% endblock %}
