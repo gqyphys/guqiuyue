@@ -43,9 +43,8 @@ $(document).ready(function() {
     		return '音量' + value;
     	}
     });
-    $("#ex1").on("change", function(slideEvt) {
+    $("#ex1").on("slide", function(slideEvt) {
     	v.volume=slideEvt.value/100;
-        console.log(v.volume);
     });
 
     // console.log(v.seekable.start(5));  // Returns the starting time (in seconds)
