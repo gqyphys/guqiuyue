@@ -28,6 +28,10 @@
 $(document).ready(function() {
     var v = document.getElementsByTagName("video")[0];
 
+    v.addEventListener("loadedmetadata",function() {
+        console.log(v.duration);
+    })
+
     $("#play").click(function(e) {
         e.stopPropagation();
 		e.preventDefault();
@@ -46,6 +50,7 @@ $(document).ready(function() {
     $("#ex1").on("slide", function(slideEvt) {
     	v.volume=slideEvt.value/100;
     });
+
 
     // console.log(v.seekable.start(5));  // Returns the starting time (in seconds)
     // v.seekable.end(0);    // Returns the ending time (in seconds)
