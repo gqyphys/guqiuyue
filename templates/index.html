@@ -11,14 +11,6 @@
 
 {% block body %}
     {{ super() }}
-    <video src="http://oss.kaoshixing.com/database/1/20161129/200655618678.mp4">
-        您的浏览器不支持 video 标签
-    </video>
-    <div class="video-control-bar">
-        <button class="btn btn-default" id="play">播放</button>
-        <button class="btn btn-default" id="pause">暂停</button>
-        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80"/>
-    </div>
 {% endblock %}
 
 {% block script %}
@@ -26,37 +18,6 @@
 <script src="../static/js/bootstrap-slider.min.js"></script>
 <script>
 $(document).ready(function() {
-    var v = document.getElementsByTagName("video")[0];
-
-    v.addEventListener("loadedmetadata",function() {
-        console.log(v.duration);
-    })
-
-    $("#play").click(function(e) {
-        e.stopPropagation();
-		e.preventDefault();
-        v.play();
-    });
-    $("#pause").click(function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        v.pause();
-    });
-    $('#ex1').slider({
-    	formatter: function(value) {
-    		return '音量' + value;
-    	}
-    });
-    $("#ex1").on("slide", function(slideEvt) {
-    	v.volume=slideEvt.value/100;
-    });
-
-
-    // console.log(v.seekable.start(5));  // Returns the starting time (in seconds)
-    // v.seekable.end(0);    // Returns the ending time (in seconds)
-    // v.currentTime = 122; // Seek to 122 seconds
-    // console.log(v.played.end(10));     // Returns the number of seconds the browser has played
-
 
 });
 </script>
