@@ -30,7 +30,6 @@
 {{ super() }}
 <script src="../static/js/recorder.js"></script>
 <script>
-$(document).ready(function() {
     function __log(e, data) {
       log.innerHTML += "\n" + e + " " + (data || '');
     }
@@ -105,6 +104,5 @@ $(document).ready(function() {
         __log('No live audio input: ' + e);
       });
     };
-});
 </script>
 {% endblock %}
