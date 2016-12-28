@@ -1,357 +1,273 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Recorder = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
+var Wami = window.Wami || {};
 
-module.exports = require("./recorder").Recorder;
-
-},{"./recorder":2}],2:[function(require,module,exports){
-'use strict';
-
-var _createClass = (function () {
-    function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-        }
-    }return function (Constructor, protoProps, staticProps) {
-        if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-    };
-})();
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.Recorder = undefined;
-
-var _inlineWorker = require('inline-worker');
-
-var _inlineWorker2 = _interopRequireDefault(_inlineWorker);
-
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { default: obj };
+// Returns a (very likely) unique string with of random letters and numbers
+Wami.createID = function() {
+	return "wid" + ("" + 1e10).replace(/[018]/g, function(a) {
+		return (a ^ Math.random() * 16 >> a / 4).toString(16)
+	});
 }
 
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
+// Creates a named callback in WAMI and returns the name as a string.
+Wami.nameCallback = function(cb, cleanup) {
+	Wami._callbacks = Wami._callbacks || {};
+	var id = Wami.createID();
+	Wami._callbacks[id] = function() {
+		if (cleanup) {
+			Wami._callbacks[id] = null;
+		}
+		cb.apply(null, arguments);
+	};
+	var named = "Wami._callbacks['" + id + "']";
+	return named;
 }
 
-var Recorder = exports.Recorder = (function () {
-    function Recorder(source, cfg) {
-        var _this = this;
+// This method ensures that a WAMI recorder is operational, and that
+// the following API is available in the Wami namespace. All functions
+// must be named (i.e. cannot be anonymous).
+//
+// Wami.startPlaying(url, startfn = null, finishedfn = null, failedfn = null);
+// Wami.stopPlaying()
+//
+// Wami.startRecording(url, startfn = null, finishedfn = null, failedfn = null);
+// Wami.stopRecording()
+//
+// Wami.getRecordingLevel() // Returns a number between 0 and 100
+// Wami.getPlayingLevel() // Returns a number between 0 and 100
+//
+// Wami.hide()
+// Wami.show()
+//
+// Manipulate the WAMI recorder's settings. In Flash
+// we need to check if the microphone permission has been granted.
+// We might also set/return sample rate here, etc.
+//
+// Wami.getSettings();
+// Wami.setSettings(options);
+//
+// Optional way to set up browser so that it's constantly listening
+// This is to prepend audio in case the user starts talking before
+// they click-to-talk.
+//
+// Wami.startListening()
+//
+Wami.setup = function(options) {
+	if (Wami.startRecording) {
+		// Wami's already defined.
+		if (options.onReady) {
+			options.onReady();
+		}
+		return;
+	}
 
-        _classCallCheck(this, Recorder);
+	// Assumes that swfobject.js is included if Wami.swfobject isn't
+	// already defined.
+	Wami.swfobject = Wami.swfobject || swfobject;
 
-        this.config = {
-            bufferLen: 4096,
-            numChannels: 2,
-            mimeType: 'audio/wav'
-        };
-        this.recording = false;
-        this.callbacks = {
-            getBuffer: [],
-            exportWAV: []
-        };
+	if (!Wami.swfobject) {
+		alert("Unable to find swfobject to help embed the SWF.");
+	}
 
-        Object.assign(this.config, cfg);
-        this.context = source.context;
-        this.node = (this.context.createScriptProcessor || this.context.createJavaScriptNode).call(this.context, this.config.bufferLen, this.config.numChannels, this.config.numChannels);
+	var _options;
+	setOptions(options);
+	embedWamiSWF(_options.id, Wami.nameCallback(delegateWamiAPI));
 
-        this.node.onaudioprocess = function (e) {
-            if (!_this.recording) return;
+	function supportsTransparency() {
+		// Detecting the OS is a big no-no in Javascript programming, but
+		// I can't think of a better way to know if wmode is supported or
+		// not... since NOT supporting it (like Flash on Ubuntu) is a bug.
+		return (navigator.platform.indexOf("Linux") == -1);
+	}
 
-            var buffer = [];
-            for (var channel = 0; channel < _this.config.numChannels; channel++) {
-                buffer.push(e.inputBuffer.getChannelData(channel));
-            }
-            _this.worker.postMessage({
-                command: 'record',
-                buffer: buffer
-            });
-        };
+	function setOptions(options) {
+		// Start with default options
+		_options = {
+			swfUrl : "Wami.swf",
+			onReady : function() {
+				Wami.hide();
+			},
+			onSecurity : checkSecurity,
+			onError : function(error) {
+				alert(error);
+			}
+		};
 
-        source.connect(this.node);
-        this.node.connect(this.context.destination); //this should not be necessary
+		if (typeof options == 'undefined') {
+			alert('Need at least an element ID to place the Flash object.');
+		}
 
-        var self = {};
-        this.worker = new _inlineWorker2.default(function () {
-            var recLength = 0,
-                recBuffers = [],
-                sampleRate = undefined,
-                numChannels = undefined;
+		if (typeof options == 'string') {
+			_options.id = options;
+		} else {
+			_options.id = options.id;
+		}
 
-            self.onmessage = function (e) {
-                switch (e.data.command) {
-                    case 'init':
-                        init(e.data.config);
-                        break;
-                    case 'record':
-                        record(e.data.buffer);
-                        break;
-                    case 'exportWAV':
-                        exportWAV(e.data.type);
-                        break;
-                    case 'getBuffer':
-                        getBuffer();
-                        break;
-                    case 'clear':
-                        clear();
-                        break;
-                }
-            };
+		if (options.swfUrl) {
+			_options.swfUrl = options.swfUrl;
+		}
 
-            function init(config) {
-                sampleRate = config.sampleRate;
-                numChannels = config.numChannels;
-                initBuffers();
-            }
+		if (options.onReady) {
+			_options.onReady = options.onReady;
+		}
 
-            function record(inputBuffer) {
-                for (var channel = 0; channel < numChannels; channel++) {
-                    recBuffers[channel].push(inputBuffer[channel]);
-                }
-                recLength += inputBuffer[0].length;
-            }
+		if (options.onLoaded) {
+			_options.onLoaded = options.onLoaded;
+		}
 
-            function exportWAV(type) {
-                var buffers = [];
-                for (var channel = 0; channel < numChannels; channel++) {
-                    buffers.push(mergeBuffers(recBuffers[channel], recLength));
-                }
-                var interleaved = undefined;
-                if (numChannels === 2) {
-                    interleaved = interleave(buffers[0], buffers[1]);
-                } else {
-                    interleaved = buffers[0];
-                }
-                var dataview = encodeWAV(interleaved);
-                var audioBlob = new Blob([dataview], { type: type });
+		if (options.onSecurity) {
+			_options.onSecurity = options.onSecurity;
+		}
 
-                self.postMessage({ command: 'exportWAV', data: audioBlob });
-            }
+		if (options.onError) {
+			_options.onError = options.onError;
+		}
 
-            function getBuffer() {
-                var buffers = [];
-                for (var channel = 0; channel < numChannels; channel++) {
-                    buffers.push(mergeBuffers(recBuffers[channel], recLength));
-                }
-                self.postMessage({ command: 'getBuffer', data: buffers });
-            }
+		// Create a DIV for the SWF under _options.id
 
-            function clear() {
-                recLength = 0;
-                recBuffers = [];
-                initBuffers();
-            }
+		var container = document.createElement('div');
+		container.style.position = 'absolute';
+		_options.cid = Wami.createID();
+		container.setAttribute('id', _options.cid);
 
-            function initBuffers() {
-                for (var channel = 0; channel < numChannels; channel++) {
-                    recBuffers[channel] = [];
-                }
-            }
+		var swfdiv = document.createElement('div');
+		var id = Wami.createID();
+		swfdiv.setAttribute('id', id);
 
-            function mergeBuffers(recBuffers, recLength) {
-                var result = new Float32Array(recLength);
-                var offset = 0;
-                for (var i = 0; i < recBuffers.length; i++) {
-                    result.set(recBuffers[i], offset);
-                    offset += recBuffers[i].length;
-                }
-                return result;
-            }
+		container.appendChild(swfdiv);
+		document.getElementById(_options.id).appendChild(container);
 
-            function interleave(inputL, inputR) {
-                var length = inputL.length + inputR.length;
-                var result = new Float32Array(length);
+		_options.id = id;
+	}
 
-                var index = 0,
-                    inputIndex = 0;
+	function checkSecurity() {
+		var settings = Wami.getSettings();
+		if (settings.microphone.granted) {
+			_options.onReady();
+		} else {
+			// Show any Flash settings panel you want:
+			// http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/system/SecurityPanel.html
+			Wami.showSecurity("privacy", "Wami.show", Wami
+					.nameCallback(_options.onSecurity), Wami
+					.nameCallback(_options.onError));
+		}
+	}
 
-                while (index < length) {
-                    result[index++] = inputL[inputIndex];
-                    result[index++] = inputR[inputIndex];
-                    inputIndex++;
-                }
-                return result;
-            }
+	// Embed the WAMI SWF and call the named callback function when loaded.
+	function embedWamiSWF(id, initfn) {
+		var flashVars = {
+			visible : false,
+			loadedCallback : initfn
+		}
 
-            function floatTo16BitPCM(output, offset, input) {
-                for (var i = 0; i < input.length; i++, offset += 2) {
-                    var s = Math.max(-1, Math.min(1, input[i]));
-                    output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
-                }
-            }
+		var params = {
+			allowScriptAccess : "always"
+		}
 
-            function writeString(view, offset, string) {
-                for (var i = 0; i < string.length; i++) {
-                    view.setUint8(offset + i, string.charCodeAt(i));
-                }
-            }
+		if (supportsTransparency()) {
+			params.wmode = "transparent";
+		}
 
-            function encodeWAV(samples) {
-                var buffer = new ArrayBuffer(44 + samples.length * 2);
-                var view = new DataView(buffer);
+		if (typeof console !== 'undefined') {
+			flashVars.console = true;
+		}
 
-                /* RIFF identifier */
-                writeString(view, 0, 'RIFF');
-                /* RIFF chunk length */
-                view.setUint32(4, 36 + samples.length * 2, true);
-                /* RIFF type */
-                writeString(view, 8, 'WAVE');
-                /* format chunk identifier */
-                writeString(view, 12, 'fmt ');
-                /* format chunk length */
-                view.setUint32(16, 16, true);
-                /* sample format (raw) */
-                view.setUint16(20, 1, true);
-                /* channel count */
-                view.setUint16(22, numChannels, true);
-                /* sample rate */
-                view.setUint32(24, sampleRate, true);
-                /* byte rate (sample rate * block align) */
-                view.setUint32(28, sampleRate * 4, true);
-                /* block align (channel count * bytes per sample) */
-                view.setUint16(32, numChannels * 2, true);
-                /* bits per sample */
-                view.setUint16(34, 16, true);
-                /* data chunk identifier */
-                writeString(view, 36, 'data');
-                /* data chunk length */
-                view.setUint32(40, samples.length * 2, true);
+		var version = '10.0.0';
+		document.getElementById(id).innerHTML = "WAMI requires Flash "
+				+ version
+				+ " or greater<br />https://get.adobe.com/flashplayer/";
 
-                floatTo16BitPCM(view, 44, samples);
+		// This is the minimum size due to the microphone security panel
+		Wami.swfobject.embedSWF(_options.swfUrl, id, 214, 137, version, null,
+				flashVars, params);
 
-                return view;
-            }
-        }, self);
+		// Without this line, Firefox has a dotted outline of the flash
+		Wami.swfobject.createCSS("#" + id, "outline:none");
+	}
 
-        this.worker.postMessage({
-            command: 'init',
-            config: {
-                sampleRate: this.context.sampleRate,
-                numChannels: this.config.numChannels
-            }
-        });
+	// To check if the microphone settings were 'remembered', we
+	// must actually embed an entirely new Wami client and check
+	// whether its microphone is granted. If it is, it was remembered.
+	function checkRemembered(finishedfn) {
+		var id = Wami.createID();
+		var div = document.createElement('div');
+		div.style.top = '-999px';
+		div.style.left = '-999px';
+		div.setAttribute('id', id);
+		var body = document.getElementsByTagName('body').item(0);
+		body.appendChild(div);
 
-        this.worker.onmessage = function (e) {
-            var cb = _this.callbacks[e.data.command].pop();
-            if (typeof cb == 'function') {
-                cb(e.data.data);
-            }
-        };
-    }
+		var fn = Wami.nameCallback(function() {
+			var swf = document.getElementById(id);
+			Wami._remembered = swf.getSettings().microphone.granted;
+			Wami.swfobject.removeSWF(id);
+			eval(finishedfn + "()");
+		});
 
-    _createClass(Recorder, [{
-        key: 'record',
-        value: function record() {
-            this.recording = true;
-        }
-    }, {
-        key: 'stop',
-        value: function stop() {
-            this.recording = false;
-        }
-    }, {
-        key: 'clear',
-        value: function clear() {
-            this.worker.postMessage({ command: 'clear' });
-        }
-    }, {
-        key: 'getBuffer',
-        value: function getBuffer(cb) {
-            cb = cb || this.config.callback;
-            if (!cb) throw new Error('Callback not set');
+		embedWamiSWF(id, fn);
+	}
 
-            this.callbacks.getBuffer.push(cb);
+	// Attach all the audio methods to the Wami namespace in the callback.
+	function delegateWamiAPI() {
+		var recorder = document.getElementById(_options.id);
 
-            this.worker.postMessage({ command: 'getBuffer' });
-        }
-    }, {
-        key: 'exportWAV',
-        value: function exportWAV(cb, mimeType) {
-            mimeType = mimeType || this.config.mimeType;
-            cb = cb || this.config.callback;
-            if (!cb) throw new Error('Callback not set');
+		function delegate(name) {
+			Wami[name] = function() {
+				return recorder[name].apply(recorder, arguments);
+			}
+		}
+		delegate('startPlaying');
+		delegate('stopPlaying');
+		delegate('startRecording');
+		delegate('stopRecording');
+		delegate('startListening');
+		delegate('stopListening');
+		delegate('getRecordingLevel');
+		delegate('getPlayingLevel');
+		delegate('setSettings');
 
-            this.callbacks.exportWAV.push(cb);
+		// Append extra information about whether mic settings are sticky
+		Wami.getSettings = function() {
+			var settings = recorder.getSettings();
+			settings.microphone.remembered = Wami._remembered;
+			return settings;
+		}
 
-            this.worker.postMessage({
-                command: 'exportWAV',
-                type: mimeType
-            });
-        }
-    }], [{
-        key: 'forceDownload',
-        value: function forceDownload(blob, filename) {
-            var url = (window.URL || window.webkitURL).createObjectURL(blob);
-            var link = window.document.createElement('a');
-            link.href = url;
-            link.download = filename || 'output.wav';
-            var click = document.createEvent("Event");
-            click.initEvent("click", true, true);
-            link.dispatchEvent(click);
-        }
-    }]);
+		Wami.showSecurity = function(panel, startfn, finishedfn, failfn) {
+			// Flash must be on top for this.
+			var container = document.getElementById(_options.cid);
 
-    return Recorder;
-})();
+			var augmentedfn = Wami.nameCallback(function() {
+				checkRemembered(finishedfn);
+				container.style.cssText = "position: absolute;";
+			});
 
-exports.default = Recorder;
+			container.style.cssText = "position: absolute; z-index: 99999";
 
-},{"inline-worker":3}],3:[function(require,module,exports){
-"use strict";
+			recorder.showSecurity(panel, startfn, augmentedfn, failfn);
+		}
 
-module.exports = require("./inline-worker");
-},{"./inline-worker":4}],4:[function(require,module,exports){
-(function (global){
-"use strict";
+		Wami.show = function() {
+			if (!supportsTransparency()) {
+				recorder.style.visibility = "visible";
+			}
+		}
 
-var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+		Wami.hide = function() {
+			// Hiding flash in all the browsers is tricky. Please read:
+			// https://code.google.com/p/wami-recorder/wiki/HidingFlash
+			if (!supportsTransparency()) {
+				recorder.style.visibility = "hidden";
+			}
+		}
 
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+		// If we already have permissions, they were previously 'remembered'
+		Wami._remembered = recorder.getSettings().microphone.granted;
 
-var WORKER_ENABLED = !!(global === global.window && global.URL && global.Blob && global.Worker);
+		if (_options.onLoaded) {
+			_options.onLoaded();
+		}
 
-var InlineWorker = (function () {
-  function InlineWorker(func, self) {
-    var _this = this;
-
-    _classCallCheck(this, InlineWorker);
-
-    if (WORKER_ENABLED) {
-      var functionBody = func.toString().trim().match(/^function\s*\w*\s*\([\w\s,]*\)\s*{([\w\W]*?)}$/)[1];
-      var url = global.URL.createObjectURL(new global.Blob([functionBody], { type: "text/javascript" }));
-
-      return new global.Worker(url);
-    }
-
-    this.self = self;
-    this.self.postMessage = function (data) {
-      setTimeout(function () {
-        _this.onmessage({ data: data });
-      }, 0);
-    };
-
-    setTimeout(function () {
-      func.call(self);
-    }, 0);
-  }
-
-  _createClass(InlineWorker, {
-    postMessage: {
-      value: function postMessage(data) {
-        var _this = this;
-
-        setTimeout(function () {
-          _this.self.onmessage({ data: data });
-        }, 0);
-      }
-    }
-  });
-
-  return InlineWorker;
-})();
-
-module.exports = InlineWorker;
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[1])(1)
-});
+		if (!_options.noSecurityCheck) {
+			checkSecurity();
+		}
+	}
+}
