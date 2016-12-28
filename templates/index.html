@@ -38,7 +38,7 @@
     // define functions
     function startRecording() {
         recording = 'temp.wav';
-        recordingUrl = 'http://localhost/save_file.php?filename=' + recording;
+        recordingUrl = 'http://127.0.0.1:5000/save_file.php?filename=' + recording;
         Wami.startRecording(recordingUrl);
         // update button attributes
         record
@@ -52,7 +52,7 @@
     function stopRecording() {
         Wami.stopRecording();
         // get the recording for playback
-        playBackUrl = 'http://localhost/127.0.0:5000/' + recording;
+        playBackUrl = 'http://127.0.0:5000/' + recording;
         // update button attributes
         record
             .html('Record')
