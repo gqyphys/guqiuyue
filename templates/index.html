@@ -4,12 +4,7 @@
 {{ super() }}
 <link rel="stylesheet" href="../static/css/bootstrap-slider.min.css">
 <style type='text/css'>
- ul { list-style: none; }
- #recordingslist audio { display: block; margin-bottom: 10px; }
 </style>
-<script>
-var version=Math.random();
-</script>
 {% endblock %}
 
 {% block body %}
@@ -26,6 +21,76 @@ var version=Math.random();
 <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 <script src="../static/js/recorder.js"></script>
 <script>
+    // initialize Wami
+    Wami.setup({
+        id: 'flash' // where to put the flash object
+    });
 
+    // initialize some global vars
+    var recording = '';
+    var recordingUrl = '';
+    var playBackUrl = '';
+
+    // get button elements
+    var record = $('#record');
+    var play = $('#play');
+
+    // define functions
+    function startRecording() {
+        recording = 'temp.wav';
+        recordingUrl = 'http://127.0.0.1:5000/save_file.php?filename=' + recording;
+        Wami.startRecording(recordingUrl);
+        // update button attributes
+        record
+            .html('Stop')
+            .unbind()
+            .click(function() {
+                stopRecording();
+            });
+    }
+
+    function stopRecording() {
+        Wami.stopRecording();
+        // get the recording for playback
+        playBackUrl = 'http://127.0.0:5000/' + recording;
+        // update button attributes
+        record
+            .html('Record')
+            .unbind()
+            .click(function() {
+                startRecording();
+            });
+    }
+
+    function startPlaying() {
+        Wami.startPlaying(playBackUrl);
+        // update button attributes
+        play
+            .html('Stop')
+            .unbind()
+            .click(function() {
+                stopPlaying();
+            });
+    }
+
+    function stopPlaying() {
+        Wami.stopPlaying();
+        // update button attributes
+        play
+            .html('Play')
+            .unbind()
+            .click(function() {
+                startPlaying();
+            });
+    }
+
+    // add initial click functions
+    record.click(function() {
+        startRecording();
+    });
+
+    play.click(function() {
+        startPlaying();
+    });
 </script>
 {% endblock %}
