@@ -29,7 +29,6 @@
         Recorder.recorderOriginalHeight = Recorder.recorder.height;
         if(Recorder.uploadFormId && $) {
           var frm = $(Recorder.uploadFormId);
-          console.log(frm);
           Recorder.recorder.init(frm.attr('action').toString(), Recorder.uploadFieldName, frm.serializeArray());
         }
         return;
