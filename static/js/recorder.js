@@ -1,273 +1,216 @@
-var Wami = window.Wami || {};
 
-// Returns a (very likely) unique string with of random letters and numbers
-Wami.createID = function() {
-	return "wid" + ("" + 1e10).replace(/[018]/g, function(a) {
-		return (a ^ Math.random() * 16 >> a / 4).toString(16)
-	});
-}
+(function(global) {
+  var Recorder;
 
-// Creates a named callback in WAMI and returns the name as a string.
-Wami.nameCallback = function(cb, cleanup) {
-	Wami._callbacks = Wami._callbacks || {};
-	var id = Wami.createID();
-	Wami._callbacks[id] = function() {
-		if (cleanup) {
-			Wami._callbacks[id] = null;
-		}
-		cb.apply(null, arguments);
-	};
-	var named = "Wami._callbacks['" + id + "']";
-	return named;
-}
+  var RECORDED_AUDIO_TYPE = "audio/wav";
 
-// This method ensures that a WAMI recorder is operational, and that
-// the following API is available in the Wami namespace. All functions
-// must be named (i.e. cannot be anonymous).
-//
-// Wami.startPlaying(url, startfn = null, finishedfn = null, failedfn = null);
-// Wami.stopPlaying()
-//
-// Wami.startRecording(url, startfn = null, finishedfn = null, failedfn = null);
-// Wami.stopRecording()
-//
-// Wami.getRecordingLevel() // Returns a number between 0 and 100
-// Wami.getPlayingLevel() // Returns a number between 0 and 100
-//
-// Wami.hide()
-// Wami.show()
-//
-// Manipulate the WAMI recorder's settings. In Flash
-// we need to check if the microphone permission has been granted.
-// We might also set/return sample rate here, etc.
-//
-// Wami.getSettings();
-// Wami.setSettings(options);
-//
-// Optional way to set up browser so that it's constantly listening
-// This is to prepend audio in case the user starts talking before
-// they click-to-talk.
-//
-// Wami.startListening()
-//
-Wami.setup = function(options) {
-	if (Wami.startRecording) {
-		// Wami's already defined.
-		if (options.onReady) {
-			options.onReady();
-		}
-		return;
-	}
+  Recorder = {
+    recorder: null,
+    recorderOriginalWidth: 0,
+    recorderOriginalHeight: 0,
+    uploadFormId: null,
+    uploadFieldName: null,
+    isReady: false,
 
-	// Assumes that swfobject.js is included if Wami.swfobject isn't
-	// already defined.
-	Wami.swfobject = Wami.swfobject || swfobject;
+    connect: function(name, attempts) {
+      if(navigator.appName.indexOf("Microsoft") != -1) {
+        Recorder.recorder = window[name];
+      } else {
+        Recorder.recorder = document[name];
+      }
 
-	if (!Wami.swfobject) {
-		alert("Unable to find swfobject to help embed the SWF.");
-	}
+      if(attempts >= 40) {
+        return;
+      }
 
-	var _options;
-	setOptions(options);
-	embedWamiSWF(_options.id, Wami.nameCallback(delegateWamiAPI));
+      // flash app needs time to load and initialize
+      if(Recorder.recorder && Recorder.recorder.init) {
+        Recorder.recorderOriginalWidth = Recorder.recorder.width;
+        Recorder.recorderOriginalHeight = Recorder.recorder.height;
+        if(Recorder.uploadFormId && $) {
+          var frm = $(Recorder.uploadFormId); 
+          Recorder.recorder.init(frm.attr('action').toString(), Recorder.uploadFieldName, frm.serializeArray());
+        }
+        return;
+      }
 
-	function supportsTransparency() {
-		// Detecting the OS is a big no-no in Javascript programming, but
-		// I can't think of a better way to know if wmode is supported or
-		// not... since NOT supporting it (like Flash on Ubuntu) is a bug.
-		return (navigator.platform.indexOf("Linux") == -1);
-	}
+      setTimeout(function() {Recorder.connect(name, attempts+1);}, 100);
+    },
 
-	function setOptions(options) {
-		// Start with default options
-		_options = {
-			swfUrl : "Wami.swf",
-			onReady : function() {
-				Wami.hide();
-			},
-			onSecurity : checkSecurity,
-			onError : function(error) {
-				alert(error);
-			}
-		};
+    playBack: function(name) {
+      // TODO: Rename to `playback`
+      Recorder.recorder.playBack(name);
+    },
 
-		if (typeof options == 'undefined') {
-			alert('Need at least an element ID to place the Flash object.');
-		}
+    pausePlayBack: function(name) {
+      // TODO: Rename to `pausePlayback`
+      Recorder.recorder.pausePlayBack(name);
+    },
+    
+    playBackFrom: function(name, time) {
+      // TODO: Rename to `playbackFrom`
+      Recorder.recorder.playBackFrom(name, time);
+    },
 
-		if (typeof options == 'string') {
-			_options.id = options;
-		} else {
-			_options.id = options.id;
-		}
+    record: function(name, filename) {
+      Recorder.recorder.record(name, filename);
+    },
 
-		if (options.swfUrl) {
-			_options.swfUrl = options.swfUrl;
-		}
+    stopRecording: function() {
+      Recorder.recorder.stopRecording();
+    },
 
-		if (options.onReady) {
-			_options.onReady = options.onReady;
-		}
+    stopPlayBack: function() {
+      // TODO: Rename to `stopPlayback`
+      Recorder.recorder.stopPlayBack();
+    },
 
-		if (options.onLoaded) {
-			_options.onLoaded = options.onLoaded;
-		}
+    observeLevel: function() {
+      Recorder.recorder.observeLevel();
+    },
 
-		if (options.onSecurity) {
-			_options.onSecurity = options.onSecurity;
-		}
+    stopObservingLevel: function() {
+      Recorder.recorder.stopObservingLevel();
+    },
 
-		if (options.onError) {
-			_options.onError = options.onError;
-		}
+    observeSamples: function() {
+      Recorder.recorder.observeSamples();
+    },
 
-		// Create a DIV for the SWF under _options.id
+    stopObservingSamples: function() {
+      Recorder.recorder.stopObservingSamples();
+    },
 
-		var container = document.createElement('div');
-		container.style.position = 'absolute';
-		_options.cid = Wami.createID();
-		container.setAttribute('id', _options.cid);
+    resize: function(width, height) {
+      Recorder.recorder.width = width + "px";
+      Recorder.recorder.height = height + "px";
+    },
 
-		var swfdiv = document.createElement('div');
-		var id = Wami.createID();
-		swfdiv.setAttribute('id', id);
+    defaultSize: function() {
+      Recorder.resize(Recorder.recorderOriginalWidth, Recorder.recorderOriginalHeight);
+    },
 
-		container.appendChild(swfdiv);
-		document.getElementById(_options.id).appendChild(container);
+    show: function() {
+      Recorder.recorder.show();
+    },
 
-		_options.id = id;
-	}
+    hide: function() {
+      Recorder.recorder.hide();
+    },
 
-	function checkSecurity() {
-		var settings = Wami.getSettings();
-		if (settings.microphone.granted) {
-			_options.onReady();
-		} else {
-			// Show any Flash settings panel you want:
-			// http://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/system/SecurityPanel.html
-			Wami.showSecurity("privacy", "Wami.show", Wami
-					.nameCallback(_options.onSecurity), Wami
-					.nameCallback(_options.onError));
-		}
-	}
+    duration: function(name) {
+      // TODO: rename to `getDuration`
+      return Recorder.recorder.duration(name || Recorder.uploadFieldName);
+    },
 
-	// Embed the WAMI SWF and call the named callback function when loaded.
-	function embedWamiSWF(id, initfn) {
-		var flashVars = {
-			visible : false,
-			loadedCallback : initfn
-		}
+    getBase64: function(name) {
+      var data = Recorder.recorder.getBase64(name);
+      return 'data:' + RECORDED_AUDIO_TYPE + ';base64,' + data;
+    },
 
-		var params = {
-			allowScriptAccess : "always"
-		}
+    getBlob: function(name) {
+      var base64Data = Recorder.getBase64(name).split(',')[1];
+      return base64toBlob(base64Data, RECORDED_AUDIO_TYPE);
+    },
 
-		if (supportsTransparency()) {
-			params.wmode = "transparent";
-		}
+    getCurrentTime: function(name) {
+    	return Recorder.recorder.getCurrentTime(name);
+    },
 
-		if (typeof console !== 'undefined') {
-			flashVars.console = true;
-		}
+    isMicrophoneAccessible: function() {
+      return Recorder.recorder.isMicrophoneAccessible();
+    },
 
-		var version = '10.0.0';
-		document.getElementById(id).innerHTML = "WAMI requires Flash "
-				+ version
-				+ " or greater<br />https://get.adobe.com/flashplayer/";
+    updateForm: function() {
+      var frm = $(Recorder.uploadFormId); 
+      Recorder.recorder.update(frm.serializeArray());
+    },
 
-		// This is the minimum size due to the microphone security panel
-		Wami.swfobject.embedSWF(_options.swfUrl, id, 214, 137, version, null,
-				flashVars, params);
+    showPermissionWindow: function(options) {
+      Recorder.resize(240, 160);
+      // need to wait until app is resized before displaying permissions screen
+      var permissionCommand = function() {
+        if (options && options.permanent) {
+          Recorder.recorder.permitPermanently();
+        } else {
+          Recorder.recorder.permit();
+        }
+      };
+      setTimeout(permissionCommand, 1);
+    },
 
-		// Without this line, Firefox has a dotted outline of the flash
-		Wami.swfobject.createCSS("#" + id, "outline:none");
-	}
+    configure: function(rate, gain, silenceLevel, silenceTimeout) {
+      rate = parseInt(rate || 22);
+      gain = parseInt(gain || 100);
+      silenceLevel = parseInt(silenceLevel || 0);
+      silenceTimeout = parseInt(silenceTimeout || 4000);
+      switch(rate) {
+      case 44:
+      case 22:
+      case 11:
+      case 8:
+      case 5:
+        break;
+      default:
+        throw("invalid rate " + rate);
+      }
 
-	// To check if the microphone settings were 'remembered', we
-	// must actually embed an entirely new Wami client and check
-	// whether its microphone is granted. If it is, it was remembered.
-	function checkRemembered(finishedfn) {
-		var id = Wami.createID();
-		var div = document.createElement('div');
-		div.style.top = '-999px';
-		div.style.left = '-999px';
-		div.setAttribute('id', id);
-		var body = document.getElementsByTagName('body').item(0);
-		body.appendChild(div);
+      if(gain < 0 || gain > 100) {
+        throw("invalid gain " + gain);
+      }
 
-		var fn = Wami.nameCallback(function() {
-			var swf = document.getElementById(id);
-			Wami._remembered = swf.getSettings().microphone.granted;
-			Wami.swfobject.removeSWF(id);
-			eval(finishedfn + "()");
-		});
+      if(silenceLevel < 0 || silenceLevel > 100) {
+        throw("invalid silenceLevel " + silenceLevel);
+      }
 
-		embedWamiSWF(id, fn);
-	}
+      if(silenceTimeout < -1) {
+        throw("invalid silenceTimeout " + silenceTimeout);
+      }
 
-	// Attach all the audio methods to the Wami namespace in the callback.
-	function delegateWamiAPI() {
-		var recorder = document.getElementById(_options.id);
+      Recorder.recorder.configure(rate, gain, silenceLevel, silenceTimeout);
+    },
 
-		function delegate(name) {
-			Wami[name] = function() {
-				return recorder[name].apply(recorder, arguments);
-			}
-		}
-		delegate('startPlaying');
-		delegate('stopPlaying');
-		delegate('startRecording');
-		delegate('stopRecording');
-		delegate('startListening');
-		delegate('stopListening');
-		delegate('getRecordingLevel');
-		delegate('getPlayingLevel');
-		delegate('setSettings');
+    setUseEchoSuppression: function(val) {
+      if(typeof(val) != 'boolean') {
+        throw("invalid value for setting echo suppression, val: " + val);
+      }
 
-		// Append extra information about whether mic settings are sticky
-		Wami.getSettings = function() {
-			var settings = recorder.getSettings();
-			settings.microphone.remembered = Wami._remembered;
-			return settings;
-		}
+      Recorder.recorder.setUseEchoSuppression(val);
+    },
 
-		Wami.showSecurity = function(panel, startfn, finishedfn, failfn) {
-			// Flash must be on top for this.
-			var container = document.getElementById(_options.cid);
+    setLoopBack: function(val) {
+      if(typeof(val) != 'boolean') {
+        throw("invalid value for setting loop back, val: " + val);
+      }
 
-			var augmentedfn = Wami.nameCallback(function() {
-				checkRemembered(finishedfn);
-				container.style.cssText = "position: absolute;";
-			});
+      Recorder.recorder.setLoopBack(val);
+    }
+  };
 
-			container.style.cssText = "position: absolute; z-index: 99999";
+  function base64toBlob(b64Data, contentType, sliceSize) {
+    contentType = contentType || '';
+    sliceSize = sliceSize || 512;
 
-			recorder.showSecurity(panel, startfn, augmentedfn, failfn);
-		}
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
 
-		Wami.show = function() {
-			if (!supportsTransparency()) {
-				recorder.style.visibility = "visible";
-			}
-		}
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      var slice = byteCharacters.slice(offset, offset + sliceSize);
 
-		Wami.hide = function() {
-			// Hiding flash in all the browsers is tricky. Please read:
-			// https://code.google.com/p/wami-recorder/wiki/HidingFlash
-			if (!supportsTransparency()) {
-				recorder.style.visibility = "hidden";
-			}
-		}
+      var byteNumbers = new Array(slice.length);
+      for (var i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
 
-		// If we already have permissions, they were previously 'remembered'
-		Wami._remembered = recorder.getSettings().microphone.granted;
+      var byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
 
-		if (_options.onLoaded) {
-			_options.onLoaded();
-		}
+    return new Blob(byteArrays, {type: contentType});
+  }
 
-		if (!_options.noSecurityCheck) {
-			checkSecurity();
-		}
-	}
-}
+
+  global.FWRecorder = Recorder;
+
+
+})(this);

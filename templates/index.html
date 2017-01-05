@@ -2,22 +2,84 @@
 
 {% block style %}
 {{ super() }}
-<link rel="stylesheet" href="../static/css/bootstrap-slider.min.css">
-<style type='text/css'>
+<style>
+
+    /* Styles for recorder buttons */
+    .recorder button, .recorder .upload, .level {
+        border: 1px solid #686868;
+        height: 30px;
+        background-color: white;
+        display: inline-block;
+        vertical-align: bottom;
+        margin: 2px;
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    /* Styles for level indicator - required! */
+    .level {
+        width: 30px;
+        height: 30px;
+        position: relative;
+    }
+    .progress {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #b10000;
+    }
+    .upload {
+        padding-top: 2px;
+    }
+
 </style>
+
 {% endblock %}
 
 {% block body %}
     {{ super() }}
-    <div id="recorder">
-        <button id="record">Record</button>
-        <button id="play">Play</button>
+    <div class="container">
+        <h1><span class="basic">Basic demo of</span><span class="project-name">FlashWavRecorder</span></h1>
+        <section class="recorder-container">
+
+            <!-- Recorder control buttons -->
+            <div class="recorder">
+                <button class="start-recording" onclick="FWRecorder.record('audio', 'audio.wav');">
+                    <img src="/static/images/record.png" alt="Record">
+                </button>
+                <div class="level">
+                    <div class="progress"></div>
+                </div>
+                <button class="stop-recording" onclick="FWRecorder.stopRecording('audio');">
+                    <img src="/static/images/stop.png" alt="Stop Recording"/>
+                </button>
+                <button class="start-playing" onclick="FWRecorder.playBack('audio');" title="Play">
+                    <img src="/static/images/play.png" alt="Play"/>
+                </button>
+                <div class="upload" style="display: inline-block">
+                    <div id="flashcontent">
+                        <p>Your browser must have JavaScript enabled and the Adobe Flash Player installed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden form for easy specifying the upload request parameters -->
+            <form id="uploadForm" name="uploadForm" action="../upload.php">
+                <input name="authenticity_token" value="xxxxx" type="hidden">
+                <input name="upload_file[parent_id]" value="1" type="hidden">
+                <input name="format" value="json" type="hidden">
+            </form>
+        </section>
     </div>
-    <div id="flash"></div>
 {% endblock %}
 
 {% block script %}
 {{ super() }}
+<script type="text/javascript" src="/static/js/swfobject.js"></script>
+<script type="text/javascript" src="/static/js/recorder.js"></script>
+<script type="text/javascript" src="/static/basic.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 <script src="../static/js/recorder.js"></script>
 <script>
