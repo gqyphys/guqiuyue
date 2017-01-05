@@ -28,7 +28,8 @@
         Recorder.recorderOriginalWidth = Recorder.recorder.width;
         Recorder.recorderOriginalHeight = Recorder.recorder.height;
         if(Recorder.uploadFormId && $) {
-          var frm = $(Recorder.uploadFormId); 
+          var frm = $(Recorder.uploadFormId);
+          console.log(frm);
           Recorder.recorder.init(frm.attr('action').toString(), Recorder.uploadFieldName, frm.serializeArray());
         }
         return;
@@ -46,7 +47,7 @@
       // TODO: Rename to `pausePlayback`
       Recorder.recorder.pausePlayBack(name);
     },
-    
+
     playBackFrom: function(name, time) {
       // TODO: Rename to `playbackFrom`
       Recorder.recorder.playBackFrom(name, time);
@@ -122,7 +123,7 @@
     },
 
     updateForm: function() {
-      var frm = $(Recorder.uploadFormId); 
+      var frm = $(Recorder.uploadFormId);
       Recorder.recorder.update(frm.serializeArray());
     },
 

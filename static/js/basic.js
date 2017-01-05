@@ -12,7 +12,6 @@ $(function () {
 
   window.fwr_event_handler = function fwr_event_handler() {
     var name, $controls;
-    console.log(arguments[0]);
     switch (arguments[0]) {
       case "ready":
         FWRecorder.uploadFormId = "#uploadForm";
