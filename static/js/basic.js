@@ -5,7 +5,7 @@ $(function () {
 
   var appWidth = 24;
   var appHeight = 24;
-  var flashvars = {'upload_image': '/staic/images/upload.png'};
+  var flashvars = {'upload_image': '/static/images/upload.png'};
   var params = {};
   var attributes = {'id': RECORDER_APP_ID, 'name': RECORDER_APP_ID};
   swfobject.embedSWF("/static/js/recorder.swf", "flashcontent", appWidth, appHeight, "11.0.0", "", flashvars, params, attributes);
