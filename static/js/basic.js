@@ -8,7 +8,7 @@ $(function () {
   var flashvars = {'upload_image': '/staic/images/upload.png'};
   var params = {};
   var attributes = {'id': RECORDER_APP_ID, 'name': RECORDER_APP_ID};
-  swfobject.embedSWF("/staic/js/recorder.swf", "flashcontent", appWidth, appHeight, "11.0.0", "", flashvars, params, attributes);
+  swfobject.embedSWF("/static/js/recorder.swf", "flashcontent", appWidth, appHeight, "11.0.0", "", flashvars, params, attributes);
 
   window.fwr_event_handler = function fwr_event_handler() {
     var name, $controls;
