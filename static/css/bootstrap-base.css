@@ -5,7 +5,7 @@ body {
     font-size: 12px;
 }
 
-.viewFramework{
+.viewFrameWork{
     position: absolute;
     width: 100%;
     top: 0px;
@@ -14,7 +14,7 @@ body {
     z-index: 100;
 }
 
-.viewFramework-sidebar{
+.viewFrameWork-sidebar{
     width: 0px;
     display: none;
     position: fixed;
@@ -25,12 +25,12 @@ body {
     overflow-x: hidden;
 }
 
-.viewFramework .viewFramework-sidebar{
+.viewFrameWork .viewFrameWork-sidebar{
     width: 180px;
     display: block;
 }
 
-.viewFramework-body{
+.viewFrameWork-body{
     width: auto;
     position: absolute;
     top: 0px;
@@ -41,6 +41,6 @@ body {
     background: #FFF;
 }
 
-.viewFramework .viewFramework-body{
+.viewFrameWork .viewFrameWork-body{
     left: 180px;background: #eaedf1;
 }
