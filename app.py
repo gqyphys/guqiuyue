@@ -17,7 +17,7 @@ def recorder():
     return render_template('recorder.html')
 
 
-@app.route('/bootstrap_base/')
+@app.route('/bootstrap-base/')
 def bootstrap_base():
     return render_template('bootstrap-base.html')
 
