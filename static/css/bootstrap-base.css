@@ -46,6 +46,7 @@ body {
 }
 
 .viewFrameWork-sidebar .sidebar-top{
+    display: block;
     height: 50px;
     width: 100%;
     background: #4A5064;
