@@ -19,7 +19,7 @@ def recorder():
 
 @app.route('/bootstrap_base/')
 def bootstrap_base():
-    return render_template('bootstrap_base.html')
+    return render_template('bootstrap-base.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
