@@ -1448,7 +1448,7 @@ a
 a:hover,
 a:focus
 {
-    text-decoration: underline;
+    text-decoration: none;
 
     color: #23527c;
 }
@@ -4480,7 +4480,7 @@ fieldset[disabled] .btn-link
 .btn-link:hover,
 .btn-link:focus
 {
-    text-decoration: underline;
+    text-decoration: none;
 
     color: #23527c;
     background-color: transparent;
