@@ -53,7 +53,8 @@ a:hover,a:focus{text-decoration: none;}
 /*nav-pills*/
 .nav-pills{font-size: 16px;}
 .nav-pills>li::after{content: "|";}
-.nav-pills>li>a{color: #293038;border-radius: 0;}
+.nav-pills>li:last-child{content: none;}
+.nav-pills>li>a{color: #293038;border-radius: 0;display: inline-block;}
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{color: #5d9cec;background-color: inherit;border-radius: 0}
 .nav>li>a:focus, .nav>li>a:hover{color: #5d9cec;background-color: inherit;}
 
