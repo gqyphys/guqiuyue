@@ -4,10 +4,12 @@ body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 body {font-size: 12px;}
 a:hover,a:focus{text-decoration: none;}
 
+/*split the frame of the backstadge*/
 .viewFrameWork{position: absolute;width: 100%;top: 0px;bottom: 0px;background-color: #000;z-index: 100;}
 .viewFrameWork .viewFrameWork-sidebar{width: 180px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
 .viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 180px;bottom: 0px;right: 0px;overflow: hidden;background: #eaedf1;;}
 
+/*****viewFrameWork-sidebar start*******/
 .viewFrameWork-sidebar .sidebar-top{
     display: block;height: 50px;width: 100%;background: #fff;color: #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
@@ -33,6 +35,20 @@ a:hover,a:focus{text-decoration: none;}
 }
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{line-height: 30px;font-size: 20px;width: 50px;float: left;text-align: right;padding-right: 10px;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{display: block;text-align: left;line-height: 30px;}
+/*****viewFrameWork-sidebar end*******/
+
+/*******viewFrameWork-body body-addition start**********/
+.viewFrameWork-body{margin: 0 8px;position: relative;}
+.viewFrameWork-body .body-addition .body-top-left{padding-right: 80px;}
+.viewFrameWork-body .body-addition .body-top-right{width: 80px;position: absolute;top: 0;right: 0;}
+
+/*******viewFrameWork-body body-addition end**********/
+
+/*this is the mian content of each page*/
+/*******viewFrameWork-body body-content start**********/
+
+/*******viewFrameWork-body body-content end**********/
+
 
 
 
