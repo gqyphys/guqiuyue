@@ -55,7 +55,7 @@ a:hover,a:focus{text-decoration: none;}
 .nav>li>a{color: #293038;}
 .nav-pills>li>a{border-radius: 0;}
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{color: #5d9cec;background-color: inherit;border-radius: 0}
-.nav>li>a:focus, .nav>li>a:hover{color: #fff;background-color: #5d9cec;}
+.nav>li>a:focus, .nav>li>a:hover{color: #5d9cec;background-color: inherit;}
 
 /*tooltip*/
 .tooltip.right .tooltip-arrow{border-right-color: #293038;}
