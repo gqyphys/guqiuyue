@@ -31,5 +31,5 @@ a:hover,a:focus{text-decoration: none;}
     display: block;height: 50px;width: 100%;position: absolute;bottom: 0;color: #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
-.viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom{line-height: 30px;font-size: 20px;width: 50px;float: left;text-align: left;padding-right: 10px;}
+.viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{line-height: 30px;font-size: 20px;width: 50px;float: left;text-align: left;padding-right: 10px;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{display: block;text-align: left;line-height: 30px;}
