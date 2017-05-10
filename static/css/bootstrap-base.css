@@ -59,3 +59,21 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+.sidebar-logo .icon-logo{
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.sidebar-inner .sidebar-fold{
+    height: 30px;
+    width: 100%;
+    background: #4A5064;
+    color: #aeb9c2;
+    text-align: center;
+    line-height: 30px !important;
+    font-size: 12px;
+    user-select: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
