@@ -51,7 +51,7 @@ a:hover,a:focus{text-decoration: none;}
 
 
 /*nav-pills*/
-.nav-pills{font-size: 16px;}
+.nav-pills{font-size: 18px;}
 .nav-pills>li::after{content: "|";color: #ccc;}
 .nav-pills>li:last-child::after{content: none;}
 .nav-pills>li>a{color: #ccc;border-radius: 0;display: inline-block;}
