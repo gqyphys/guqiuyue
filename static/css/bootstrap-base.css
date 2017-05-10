@@ -61,3 +61,7 @@ a:hover,a:focus{text-decoration: none;}
 /*tooltip*/
 .tooltip.right .tooltip-arrow{border-right-color: #293038;}
 .tooltip .tooltip-inner{padding: 10px 12px;background-color: #293038;border-radius: 0;}
+
+/*progress*/
+.progress{display: inline-block;width: 200px;margin: 0;height: 5px;vertical-align: middle;}
+.progress .progress-bar{background-color: #5d9cec;border-radius: 4px;}
