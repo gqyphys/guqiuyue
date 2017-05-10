@@ -94,7 +94,7 @@ body {
     line-height: 40px;
     overflow: hidden;
 }
-.sidebar-inner .sidebar-nav li a:hover{
+.sidebar-inner .sidebar-nav li a:hover,.sidebar-inner .sidebar-nav li.active{
     background: #4A5064;
 }
 .sidebar-inner .sidebar-nav .nav-icon{
