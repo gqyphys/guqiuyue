@@ -94,7 +94,9 @@ body {
     line-height: 40px;
     overflow: hidden;
 }
-
+.sidebar-inner .sidebar-nav li a:hover{
+    background: #4A5064;
+}
 .sidebar-inner .sidebar-nav .nav-icon{
     width: 50px;
     text-align: center;
