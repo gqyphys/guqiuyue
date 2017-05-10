@@ -33,3 +33,9 @@ a:hover,a:focus{text-decoration: none;}
 }
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{line-height: 30px;font-size: 20px;width: 50px;float: left;text-align: right;padding-right: 10px;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{display: block;text-align: left;line-height: 30px;}
+
+
+
+/*tooltip*/
+.tooltip.right .tooltip-arrow{border-right-color: #293038;}
+.tooltip .tooltip-inner{padding: 10px 12px;background-color: #293038;border-radius: 0;}

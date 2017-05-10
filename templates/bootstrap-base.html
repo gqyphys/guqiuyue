@@ -35,7 +35,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/bootstrap-base/" class="" tooltip>
+                                <a href="/bootstrap-base/" class="" data-toggle="tooltip" data-placement="right"
+                                    data-container="body" title="考试管理">
                                     <div class="nav-icon">
                                         <span class="glyphicon glyphicon-book icon-exam" aria-hidden="true"></span>
                                     </div>
@@ -64,7 +65,7 @@
         <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
         <script>
             $(function () {
-              $('[data-toggle="tooltip"]').tooltip("show");
+              $('[data-toggle="tooltip"]').tooltip();
             })
         </script>
     </body>
