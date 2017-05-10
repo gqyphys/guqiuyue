@@ -31,3 +31,4 @@ body {font-size: 12px;}
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
 .viewFrameWork-sidebar .sidebar-bottom .icon-user{line-height: 50px;font-size: 20px;}
+.viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{display: block;}
