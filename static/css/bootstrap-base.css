@@ -87,3 +87,27 @@ body {
     overflow-x: hidden;
 
 }
+.sidebar-inner .sidebar-nav li a{
+    display: block;
+    width: 180px;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+.sidebar-inner .sidebar-nav .nav-icon{
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    color: #aeb9c2;
+}
+.sidebar-inner .sidebar-nav .nav-title{
+    float: left;
+    overflow: hidden;
+    color: #fff;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    width: 130px;
+}
