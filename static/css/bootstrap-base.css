@@ -1,115 +1,33 @@
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
 }
-body {
-    font-size: 12px;
-}
+body {font-size: 12px;}
 
-.viewFrameWork{
-    position: absolute;
-    width: 100%;
-    top: 0px;
-    bottom: 0px;
-    background-color: #000;
-    z-index: 100;
-}
-
-.viewFrameWork-sidebar{
-    width: 0px;
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0px;
-    background-color: #293038;
-    z-index: 102;
-    overflow-x: hidden;
-}
-
-.viewFrameWork .viewFrameWork-sidebar{
-    width: 180px;
-    display: block;
-}
-
-.viewFrameWork-body{
-    width: auto;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    overflow: hidden;
-    background: #FFF;
-}
-
-.viewFrameWork .viewFrameWork-body{
-    left: 180px;background: #eaedf1;
-}
+.viewFrameWork{position: absolute;width: 100%;top: 0px;bottom: 0px;background-color: #000;z-index: 100;}
+.viewFrameWork .viewFrameWork-sidebar{width: 180px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
+.viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 180px;bottom: 0px;right: 0px;overflow: hidden;background: #eaedf1;;}
 
 .viewFrameWork-sidebar .sidebar-top{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background: #fff;
-    color: #aeb9c2;
-    text-align: center;
-    line-height: 30px !important;
-    font-size: 12px;
-    user-select: none;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
+    display: block;height: 50px;width: 100%;background: #fff;color: #aeb9c2;text-align: center;cursor: pointer;
+    user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
-.sidebar-logo .icon-logo{
-    line-height: 50px;
-    font-size: 20px;
+.viewFrameWork-sidebar .sidebar-top .icon-logo{line-height: 50px;font-size: 20px;}
+
+.viewFrameWork-sidebar .sidebar-inner{position: relative;}
+.viewFrameWork-sidebar .sidebar-inner .sidebar-fold{
+    height: 30px;width: 100%;background: #4A5064;color: #aeb9c2;text-align: center;cursor: pointer;
+    user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
 
-.sidebar-inner .sidebar-fold{
-    height: 30px;
-    width: 100%;
-    background: #4A5064;
-    color: #aeb9c2;
-    text-align: center;
-    line-height: 30px !important;
-    font-size: 12px;
-    user-select: none;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-}
+.viewFrameWork-sidebar .sidebar-inner .sidebar-nav{width: 100%;overflow-x: hidden;overflow-y: auto;}
+.sidebar-inner .sidebar-nav ul{width: 200px;margin: 0;padding: 0;list-style: none;overflow-y: scroll;overflow-x: hidden;}
+.sidebar-inner .sidebar-nav li a{display: block;width: 180px;height: 40px;line-height: 40px;overflow: hidden;}
+.sidebar-inner .sidebar-nav li a:hover,.sidebar-inner .sidebar-nav li.active{background: #4A5064;}
+.sidebar-inner .sidebar-nav .nav-icon{width: 50px;text-align: center;font-size: 16px;float: left;color: #aeb9c2;}
+.sidebar-inner .sidebar-nav .nav-title{float: left;overflow: hidden;color: #fff;white-space: nowrap;text-overflow: ellipsis;display: block;width: 130px;}
 
-.sidebar-nav ul{
-    width: 200px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow-y: scroll;
-    overflow-x: hidden;
-
+.viewFrameWork-sidebar .sidebar-bottom{
+    display: block;height: 50px;width: 100%;background: #fff;color: #aeb9c2;text-align: center;cursor: pointer;
+    user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
-.sidebar-inner .sidebar-nav li a{
-    display: block;
-    width: 180px;
-    height: 40px;
-    line-height: 40px;
-    overflow: hidden;
-}
-.sidebar-inner .sidebar-nav li a:hover,.sidebar-inner .sidebar-nav li.active{
-    background: #4A5064;
-}
-.sidebar-inner .sidebar-nav .nav-icon{
-    width: 50px;
-    text-align: center;
-    font-size: 16px;
-    float: left;
-    color: #aeb9c2;
-}
-.sidebar-inner .sidebar-nav .nav-title{
-    float: left;
-    overflow: hidden;
-    color: #fff;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: block;
-    width: 130px;
-}
+.viewFrameWork-sidebar .sidebar-bottom .icon-user{line-height: 50px;font-size: 20px;}
