@@ -27,7 +27,7 @@ body {font-size: 12px;}
 .sidebar-inner .sidebar-nav .nav-title{float: left;overflow: hidden;color: #fff;white-space: nowrap;text-overflow: ellipsis;display: block;width: 130px;}
 
 .viewFrameWork-sidebar .sidebar-bottom{
-    display: block;height: 50px;width: 100%;background: #fff;color: #aeb9c2;text-align: center;cursor: pointer;
+    display: block;height: 50px;width: 100%;position: absolute;bottom: 0;color: #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
 .viewFrameWork-sidebar .sidebar-bottom .icon-user{line-height: 50px;font-size: 20px;}
