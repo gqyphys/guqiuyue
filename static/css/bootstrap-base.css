@@ -38,7 +38,7 @@ a:hover,a:focus{text-decoration: none;}
 /*****viewFrameWork-sidebar end*******/
 
 /*******viewFrameWork-body body-addition start**********/
-.viewFrameWork-body .body-addition{margin: 0 8px;position: relative;}
+.viewFrameWork-body .body-addition{position: relative;}
 .viewFrameWork-body .body-addition .body-top-left{padding-right: 80px;}
 .viewFrameWork-body .body-addition .body-top-right{width: 80px;position: absolute;top: 0;right: 0;}
 
@@ -50,7 +50,10 @@ a:hover,a:focus{text-decoration: none;}
 /*******viewFrameWork-body body-content end**********/
 
 
-
+/*nav-pills*/
+.nav-pills{font-size: 16px;}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{color: #293038;background-color: inherit;border-radius: 0}
+.nav>li>a:focus, .nav>li>a:hover{color: #fff;background-color: #293038;}
 
 /*tooltip*/
 .tooltip.right .tooltip-arrow{border-right-color: #293038;}
