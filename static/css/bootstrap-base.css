@@ -66,6 +66,8 @@ input:focus,textarea:focus{outline: none;}
 .search-section .search-section-adv{position: relative;}
 .search-section .search-section-adv .search-section-adv-title{cursor: pointer;color: #5d9cec;}
 .search-section .search-section-adv .search-section-adv-panel{left: initial;right: 0;padding: 10px;}
+
+.body-top-right.body-section-add .section-add-btn{width: 100%;height: 100%;display: grid;}
 /*******viewFrameWork-body body-addition end**********/
 
 /*this is the mian content of each page*/
