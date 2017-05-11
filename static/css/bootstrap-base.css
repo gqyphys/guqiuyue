@@ -49,8 +49,12 @@ a:hover,a:focus{text-decoration: none;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
 
 .viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;}
+.body-toolbar .body-toolbar-right > *{display: inline-block;}
 
-
+.search-section > *{display: inline-block;}
+.search-section .search-section-normal{position: relative;}
+.search-section .search-section-normal .search-section-icon{position: absolute;right: 10px;font-size: 14px;top: 10px;}
+.search-section .search-section-normal .search-section-area{width: 250px;height: 34px;border-radius: 17px;border: 1px solid #cacaca;}
 
 
 /*******viewFrameWork-body body-addition end**********/
