@@ -37,7 +37,7 @@ input:focus,textarea:focus{outline: none;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{line-height: 30px;font-size: 20px;width: 50px;float: left;text-align: right;padding-right: 10px;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{display: block;text-align: left;line-height: 30px;}
 /*fold sidebar status*/
-.viewFrameWork.sidebar-min{width: 50px;}
+.viewFrameWork.sidebar-min .viewFrameWork-sidebar{width: 50px;}
 .viewFrameWork.sidebar-min .viewFrameWork-body{left: 50px;}
 .viewFrameWork.sidebar-min .nav-title{display: none;}
 /*****viewFrameWork-sidebar end*******/
