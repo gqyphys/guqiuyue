@@ -11,7 +11,7 @@ a:hover,a:focus{text-decoration: none;}
 
 /*****viewFrameWork-sidebar start*******/
 .viewFrameWork-sidebar .sidebar-top{
-    display: block;height: 50px;width: 100%;background: #fff;color: #aeb9c2;text-align: center;cursor: pointer;
+    display: block;height: 50px;width: 100%;background: #fff;color: #aeb9c2;border-right: 1px solid #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
 .viewFrameWork-sidebar .sidebar-top .icon-logo{line-height: 50px;font-size: 20px;}
@@ -48,7 +48,7 @@ a:hover,a:focus{text-decoration: none;}
 .body-top-left .nav-right .nav-state-icon{display: inline-block;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
 
-.viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;}
+.viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;border-bottom: 1px solid #aeb9c2;}
 
 
 
