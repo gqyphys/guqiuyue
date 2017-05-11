@@ -86,4 +86,5 @@ input:focus,textarea:focus{outline: none;}
 .progress .progress-bar{background-color: #5d9cec;border-radius: 4px;}
 
 /*button*/
-.btn .btn-icon{margin-right: 5px;}
+.btn .btn-icon-left{margin-right: 5px;}
+.btn .btn-icon-right{margin-left: 5px;}
