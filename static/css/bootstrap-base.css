@@ -46,8 +46,13 @@ input:focus,textarea:focus{outline: none;}
 .viewFrameWork-body .body-addition .body-top-left .nav-left{padding-top: 15px;}
 .viewFrameWork-body .body-addition .body-top-left .nav-right{line-height: 60px;height: 60px;}
 
-.body-top-left .nav-right .nav-state-icon{display: inline-block;}
+.body-top-left .nav-right .nav-state-icon{display: inline-block;vertical-align: middle;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
+.body-top-left .nav-right .nav-state-icon.nav-state-message{width: 100px;text-align: center;font-size: 20px;color: #293038;}
+
+.nav-state-message .message-section{position: relative;}
+.nav-state-message .message-section .message-section-count{position: absolute;width: 10px;height: 10px;background-color: #ff0000;color: #fff;border-radius: 50%;}
+
 
 .viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;}
 .body-toolbar .body-toolbar-left > *,.body-toolbar .body-toolbar-right > *{display: inline-block;margin-right: 10px;}
