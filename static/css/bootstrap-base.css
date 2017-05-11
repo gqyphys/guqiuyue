@@ -45,6 +45,10 @@ a:hover,a:focus{text-decoration: none;}
 .viewFrameWork-body .body-addition .body-top-left .nav-left{padding-top: 15px;}
 .viewFrameWork-body .body-addition .body-top-left .nav-right{line-height: 60px;}
 
+.body-top-left .nav-right .nav-state-icon{display: inline-block;}
+.body-top-left .nav-right .nav-state-icon > *{vertical-align: middle;}
+
+
 /*******viewFrameWork-body body-addition end**********/
 
 /*this is the mian content of each page*/
@@ -66,5 +70,5 @@ a:hover,a:focus{text-decoration: none;}
 .tooltip .tooltip-inner{padding: 10px 12px;background-color: #293038;border-radius: 0;}
 
 /*progress*/
-.progress{display: inline-block;width: 200px;margin: 0;height: 5px;vertical-align: middle;}
+.progress{display: inline-block;width: 100px;background-color: #ccc;margin: 0;height: 5px;vertical-align: middle;}
 .progress .progress-bar{background-color: #5d9cec;border-radius: 4px;}
