@@ -212,7 +212,7 @@
                 $('[data-toggle="tooltip"]').tooltip();
 
                 // fold sidebar
-                $("#sidebar-fold").click(function() {
+                $("#sidebar-fold").click(function(e) {
                     e.stopPropagation();
                     e.preventDefault();
                     if($(this).hasClass("icon-unfold")){
