@@ -12,9 +12,9 @@
     </head>
 
     <body>
-        <div class="viewFrameWork">
+        <div class="viewFrameWork sidebar-full">
             <!-- viewFrameWork-sidebar -->
-            <div class="viewFrameWork-sidebar sidebar-full">
+            <div class="viewFrameWork-sidebar">
                 <a href="/bootstrap-base/" class="sidebar-top sidebar-logo sidebar-btn"
                     title="/bootstrap-base/" target="_blank">
                     <span class="glyphicon glyphicon-search icon-logo" aria-hidden="true"></span>
@@ -217,12 +217,12 @@
                     e.preventDefault();
                     if($(this).hasClass("icon-unfold")){
                         // fold sidebar
-                        $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","展开");
-                        $(".viewFrameWork-sidebar").removeClass("sidebar-full").addClass("sidebar-min");
+                        $(this).removeClass("icon-unfold").addClass("icon-fold");
+                        $(".viewFrameWork").removeClass("sidebar-full").addClass("sidebar-min");
                     }else if ($(this).hasClass("icon-fold")) {
                         // unfold sidebar
-                        $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","收起");
-                        $(".viewFrameWork-sidebar").removeClass("sidebar-min").addClass("sidebar-full");
+                        $(this).removeClass("icon-unfold").addClass("icon-fold");
+                        $(".viewFrameWork").removeClass("sidebar-min").addClass("sidebar-full");
                     }
                 });
             });
