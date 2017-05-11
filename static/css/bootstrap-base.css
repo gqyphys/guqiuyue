@@ -84,3 +84,6 @@ input:focus,textarea:focus{outline: none;}
 /*progress*/
 .progress{display: inline-block;width: 100px;background-color: #ccc;margin: 0;height: 5px;vertical-align: middle;}
 .progress .progress-bar{background-color: #5d9cec;border-radius: 4px;}
+
+/*button*/
+.btn .btn-icon{margin-right: 5px;}
