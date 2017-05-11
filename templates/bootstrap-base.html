@@ -209,7 +209,7 @@
         <script>
             $(function () {
                 // initial tooltip
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="tooltip"]').tooltip('show');
 
                 // fold sidebar
                 $("#sidebar-fold").click(function(e) {
@@ -224,7 +224,6 @@
                         $(this).removeClass("icon-fold").addClass("icon-unfold");
                         $(".viewFrameWork").removeClass("sidebar-min").addClass("sidebar-full");
                     }
-                    $('[data-toggle="tooltip"]').tooltip();
                 });
             });
 
