@@ -43,7 +43,7 @@ a:hover,a:focus{text-decoration: none;}
 .viewFrameWork-body .body-addition .body-top-right{width: 80px;position: absolute;top: 0;right: 0;}
 
 .viewFrameWork-body .body-addition .body-top-left .nav-left{padding-top: 15px;}
-.viewFrameWork-body .body-addition .body-top-left .nav-right{line-height: 60px;}
+.viewFrameWork-body .body-addition .body-top-left .nav-right{line-height: 60px;height: 60px;}
 
 .body-top-left .nav-right .nav-state-icon{display: inline-block;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
