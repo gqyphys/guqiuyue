@@ -50,7 +50,7 @@ input:focus,textarea:focus{outline: none;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
 
 .viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;}
-.body-toolbar .body-toolbar-right > *{display: inline-block;margin-right: 10px;}
+.body-toolbar .body-toolbar-left > *,.body-toolbar .body-toolbar-right > *{display: inline-block;margin-right: 10px;}
 
 .search-section > *{display: inline-block;margin-right: 10px}
 .search-section .search-section-normal{position: relative;}
@@ -59,8 +59,8 @@ input:focus,textarea:focus{outline: none;}
 .search-section .search-section-normal .search-section-area:focus{border-color: #5d9cec;}
 
 .search-section .search-section-adv{position: relative;}
-.search-section .search-section-adv .dropdown-toggle{cursor: pointer;color: #5d9cec;}
-.search-section .search-section-adv .dropdown-menu{left: initial;right: 0;}
+.search-section .search-section-adv .search-section-adv-title{cursor: pointer;color: #5d9cec;}
+.search-section .search-section-adv .search-section-adv-title-panel{left: initial;right: 0;padding: 10px;}
 /*******viewFrameWork-body body-addition end**********/
 
 /*this is the mian content of each page*/
