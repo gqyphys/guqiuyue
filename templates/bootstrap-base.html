@@ -14,13 +14,13 @@
     <body>
         <div class="viewFrameWork">
             <!-- viewFrameWork-sidebar -->
-            <div class="viewFrameWork-sidebar">
+            <div class="viewFrameWork-sidebar sidebar-full">
                 <a href="/bootstrap-base/" class="sidebar-top sidebar-logo sidebar-btn"
                     title="/bootstrap-base/" target="_blank">
                     <span class="glyphicon glyphicon-search icon-logo" aria-hidden="true"></span>
                 </a>
                 <div class="sidebar-inner">
-                    <div class="sidebar-fold icon-fold" data-toggle="tooltip" data-placement="right"
+                    <div class="sidebar-fold icon-unfold" id="sidebar-fold" data-toggle="tooltip" data-placement="right"
                         data-container="body" title="收起">
                         <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
                     </div>
@@ -208,8 +208,25 @@
         <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
         <script>
             $(function () {
-              $('[data-toggle="tooltip"]').tooltip();
-            })
+                // initial tooltip
+                $('[data-toggle="tooltip"]').tooltip();
+
+                // fold sidebar
+                $("#sidebar-fold").click(function() {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    if($(this).hasClass("icon-unfold")){
+                        // fold sidebar
+                        $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","展开");
+                        $(".viewFrameWork-sidebar").removeClass("sidebar-full").addClass("sidebar-min");
+                    }else if ($(this).hasClass("icon-fold")) {
+                        // unfold sidebar
+                        $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","收起");
+                        $(".viewFrameWork-sidebar").removeClass("sidebar-min").addClass("sidebar-full");
+                    }
+                });
+            });
+
         </script>
     </body>
 </html>
