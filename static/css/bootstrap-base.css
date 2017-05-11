@@ -38,7 +38,7 @@ a:hover,a:focus{text-decoration: none;}
 /*****viewFrameWork-sidebar end*******/
 
 /*******viewFrameWork-body body-addition start**********/
-.viewFrameWork-body .body-addition{position: relative;}
+.viewFrameWork-body .body-addition{position: relative;border-bottom: 1px solid #aeb9c2;}
 .viewFrameWork-body .body-addition .body-top-left{padding-right: 80px;padding-left: 10px;}
 .viewFrameWork-body .body-addition .body-top-right{width: 80px;position: absolute;top: 0;right: 0;}
 
@@ -48,7 +48,7 @@ a:hover,a:focus{text-decoration: none;}
 .body-top-left .nav-right .nav-state-icon{display: inline-block;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
 
-.viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;border-bottom: 1px solid #aeb9c2;}
+.viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;padding-bottom: 15px;}
 
 
 
