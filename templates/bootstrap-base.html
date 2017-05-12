@@ -215,7 +215,7 @@
                 $("#sidebar-fold").click(function(e) {
                     e.stopPropagation();
                     e.preventDefault();
-                    $('.collapse').collapse();
+                    $('.collapse').collapse('toggle');
                     // if($(this).hasClass("icon-unfold")){
                     //     // fold sidebar
                     //     $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","展开导航").attr("data-original-title","展开导航");
