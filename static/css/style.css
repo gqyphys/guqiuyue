@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?flgyqi');
-  src:  url('fonts/icomoon.eot?flgyqi#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?flgyqi') format('truetype'),
-    url('fonts/icomoon.woff?flgyqi') format('woff'),
-    url('fonts/icomoon.svg?flgyqi#icomoon') format('svg');
+  src:  url('../font/icomoon.eot?flgyqi');
+  src:  url('../font/icomoon.eot?flgyqi#iefix') format('embedded-opentype'),
+    url('../font/icomoon.ttf?flgyqi') format('truetype'),
+    url('../font/icomoon.woff?flgyqi') format('woff'),
+    url('../font/icomoon.svg?flgyqi#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -27,4 +27,3 @@
 .icon-User-Group-Man-Man_fffffa_100:before {
   content: "\e900";
 }
-
