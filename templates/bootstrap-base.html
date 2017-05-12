@@ -227,12 +227,12 @@
                     // }
                 });
 
-                $('#myCollapsible').on('shown.bs.collapse', function () {
+                $('.collapse').on('shown.bs.collapse', function () {
                     // unfold sidebar
                     $(this).removeClass("icon-fold").addClass("icon-unfold").attr("title","收起导航").attr("data-original-title","收起导航");
                     $(".viewFrameWork").removeClass("sidebar-min").addClass("sidebar-full");
                 });
-                $('#myCollapsible').on('hidden.bs.collapse', function () {
+                $('.collapse').on('hidden.bs.collapse', function () {
                     // fold sidebar
                     $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","展开导航").attr("data-original-title","展开导航");
                     $(".viewFrameWork").removeClass("sidebar-full").addClass("sidebar-min");
