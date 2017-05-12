@@ -11,18 +11,18 @@
         <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-base.css">
         <script>
            console.log(document.readyState);
-            window.onload = function () {
-                var frame = document.getElementById("viewFrameWork");
-                var fold = document.getElementById("sidebar-fold");
-                var fold_state = getCookie("fold_state");
-                if(fold_state=="fold"){
-                    frame.setAttribute("class","viewFrameWork sidebar-min");
-                    fold.setAttribute("class","sidebar-fold icon-fold");
-                }else if(fold_state=="unfold"){
-                    frame.setAttribute("class","viewFrameWork sidebar-full");
-                    fold.setAttribute("class","sidebar-fold icon-unfold");
-                }
-            }
+            // window.onload = function () {
+            //     var frame = document.getElementById("viewFrameWork");
+            //     var fold = document.getElementById("sidebar-fold");
+            //     var fold_state = getCookie("fold_state");
+            //     if(fold_state=="fold"){
+            //         frame.setAttribute("class","viewFrameWork sidebar-min");
+            //         fold.setAttribute("class","sidebar-fold icon-fold");
+            //     }else if(fold_state=="unfold"){
+            //         frame.setAttribute("class","viewFrameWork sidebar-full");
+            //         fold.setAttribute("class","sidebar-fold icon-unfold");
+            //     }
+            // }
         </script>
     </head>
 
@@ -223,6 +223,17 @@
         <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
         <script>
             $(function () {
+                var frame = document.getElementById("viewFrameWork");
+                var fold = document.getElementById("sidebar-fold");
+                var fold_state = getCookie("fold_state");
+                if(fold_state=="fold"){
+                    frame.setAttribute("class","viewFrameWork sidebar-min");
+                    fold.setAttribute("class","sidebar-fold icon-fold");
+                }else if(fold_state=="unfold"){
+                    frame.setAttribute("class","viewFrameWork sidebar-full");
+                    fold.setAttribute("class","sidebar-fold icon-unfold");
+                }
+
                 // initial tooltip
                 $('[data-toggle="tooltip"]').tooltip();
 
