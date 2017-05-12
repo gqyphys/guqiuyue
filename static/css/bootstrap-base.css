@@ -7,8 +7,8 @@ input:focus,textarea:focus{outline: none;}
 
 /*split the frame of the backstadge*/
 .viewFrameWork{position: absolute;width: 100%;top: 0px;bottom: 0px;background-color: #000;z-index: 100;}
-.viewFrameWork .viewFrameWork-sidebar{font-size: 14px;width: 180px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
-.viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 180px;bottom: 0px;right: 0px;overflow: hidden;background: #fff;;}
+.viewFrameWork .viewFrameWork-sidebar{font-size: 14px;width: 150px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
+.viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 150px;bottom: 0px;right: 0px;overflow: hidden;background: #fff;;}
 
 /*****viewFrameWork-sidebar start*******/
 .viewFrameWork-sidebar .sidebar-top{
@@ -28,7 +28,7 @@ input:focus,textarea:focus{outline: none;}
 .sidebar-inner .sidebar-nav li a{display: block;width: 100%;height: 60px;line-height: 60px;overflow: hidden;}
 .sidebar-inner .sidebar-nav li a:hover,.sidebar-inner .sidebar-nav li.active{background: #4A5064;}
 .sidebar-inner .sidebar-nav .nav-icon{width: 50px;text-align: center;font-size: 16px;float: left;color: #aeb9c2;}
-.sidebar-inner .sidebar-nav .nav-title{float: left;overflow: hidden;color: #fff;white-space: nowrap;text-overflow: ellipsis;display: block;width: 130px;}
+.sidebar-inner .sidebar-nav .nav-title{float: left;overflow: hidden;color: #fff;white-space: nowrap;text-overflow: ellipsis;display: block;width: 100px;}
 
 .viewFrameWork-sidebar .sidebar-bottom{
     display: block;height: 80px;width: 100%;position: absolute;bottom: 0;color: #aeb9c2;text-align: center;cursor: pointer;
