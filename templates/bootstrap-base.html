@@ -212,19 +212,19 @@
                 $('[data-toggle="tooltip"]').tooltip();
 
                 // fold sidebar
-                $("#sidebar-fold").click(function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    if($(this).hasClass("icon-unfold")){
-                        // fold sidebar
-                        $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","展开导航").attr("data-original-title","展开导航");
-                        $(".viewFrameWork").removeClass("sidebar-full").addClass("sidebar-min");
-                    }else if ($(this).hasClass("icon-fold")) {
-                        // unfold sidebar
-                        $(this).removeClass("icon-fold").addClass("icon-unfold").attr("title","收起导航").attr("data-original-title","收起导航");
-                        $(".viewFrameWork").removeClass("sidebar-min").addClass("sidebar-full");
-                    }
-                });
+                // $("#sidebar-fold").click(function(e) {
+                //     e.stopPropagation();
+                //     e.preventDefault();
+                //     if($(this).hasClass("icon-unfold")){
+                //         // fold sidebar
+                //         $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","展开导航").attr("data-original-title","展开导航");
+                //         $(".viewFrameWork").removeClass("sidebar-full").addClass("sidebar-min");
+                //     }else if ($(this).hasClass("icon-fold")) {
+                //         // unfold sidebar
+                //         $(this).removeClass("icon-fold").addClass("icon-unfold").attr("title","收起导航").attr("data-original-title","收起导航");
+                //         $(".viewFrameWork").removeClass("sidebar-min").addClass("sidebar-full");
+                //     }
+                // });
             });
 
         </script>
