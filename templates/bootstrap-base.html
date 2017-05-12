@@ -12,7 +12,7 @@
     </head>
 
     <body>
-        <div class="viewFrameWork sidebar-full getCookie('fold_state')">
+        <div class="viewFrameWork sidebar-full">
             <!-- viewFrameWork-sidebar -->
             <div class="viewFrameWork-sidebar">
                 <a href="/bootstrap-base/" class="sidebar-top sidebar-logo sidebar-btn"
@@ -228,7 +228,7 @@
                         setCookie("fold_state","unfold");
                     }
                 });
-                console.log(getCookie("fold_state"));
+
                 function setCookie(c_name,value){
                     document.cookie=c_name+ "=" +escape(value);
                 }
@@ -245,7 +245,7 @@
                             return unescape(document.cookie.substring(c_start,c_end));
                         }
                     }
-                    return ""
+                    return "";
                 }
 
             });
