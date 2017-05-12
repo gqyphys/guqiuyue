@@ -34,7 +34,7 @@ input:focus,textarea:focus{outline: none;}
     display: block;height: 80px;width: 100%;position: absolute;bottom: 0;color: #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
-.viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{line-height: 30px;font-size: 20px;width: 50px;float: left;text-align: right;padding-right: 10px;}
+.viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{line-height: 30px;width: 50px;float: left;text-align: right;padding-right: 10px;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{display: block;text-align: left;line-height: 30px;}
 /*fold sidebar status*/
 .viewFrameWork.sidebar-min .viewFrameWork-sidebar{width: 50px;}
