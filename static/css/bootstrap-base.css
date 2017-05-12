@@ -42,11 +42,11 @@ input:focus,textarea:focus{outline: none;}
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-title{float: left;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;display: block;width: 100px;}
 /*fold sidebar status*/
 .viewFrameWork.sidebar-min .viewFrameWork-sidebar{
-    width: 50px;
-    animation: foldsidebar 5s;
-    -moz-animation: foldsidebar 5s;	/* Firefox */
-    -webkit-animation: foldsidebar 5s;	/* Safari 和 Chrome */
-    -o-animation: foldsidebar 5s;	/* Opera */
+    /*width: 50px;*/
+    animation: foldsidebar 1s;
+    -moz-animation: foldsidebar 1s;	/* Firefox */
+    -webkit-animation: foldsidebar 1s;	/* Safari 和 Chrome */
+    -o-animation: foldsidebar 1s;	/* Opera */
 }
 @keyframes foldsidebar{
     0%   {width: 160px;}
@@ -55,8 +55,8 @@ input:focus,textarea:focus{outline: none;}
 
 @-moz-keyframes foldsidebar /* Firefox */
 {
-    0%   {background: red;}
-    100% {background: green;}
+    0%   {width: 160px;}
+    100% {background: 50px;}
 }
 
 @-webkit-keyframes foldsidebar /* Safari 和 Chrome */
