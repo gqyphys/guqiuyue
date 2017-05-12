@@ -21,7 +21,7 @@
                 </a>
                 <div class="sidebar-inner">
                     <div class="sidebar-fold icon-unfold" id="sidebar-fold" data-toggle="tooltip" data-placement="right"
-                        data-container="body" title="收起">
+                        data-container="body" title="收起导航">
                         <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
                     </div>
                     <div class="sidebar-nav">
@@ -217,11 +217,11 @@
                     e.preventDefault();
                     if($(this).hasClass("icon-unfold")){
                         // fold sidebar
-                        $(this).removeClass("icon-unfold").addClass("icon-fold");
+                        $(this).removeClass("icon-unfold").addClass("icon-fold").attr("title","收起导航");
                         $(".viewFrameWork").removeClass("sidebar-full").addClass("sidebar-min");
                     }else if ($(this).hasClass("icon-fold")) {
                         // unfold sidebar
-                        $(this).removeClass("icon-fold").addClass("icon-unfold");
+                        $(this).removeClass("icon-fold").addClass("icon-unfold").attr("title","展开导航");
                         $(".viewFrameWork").removeClass("sidebar-min").addClass("sidebar-full");
                     }
                 });
