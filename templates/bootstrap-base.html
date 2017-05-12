@@ -229,10 +229,8 @@
                     }
                 });
                 console.log(getCookie("fold_state"));
-                function setCookie(c_name,value,expireday){
-                    var exdate=new Date();
-                    exdate.setDate(exdate.getDate()+expiredays);
-                    document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+                function setCookie(c_name,value){
+                    document.cookie=c_name+ "=" +escape(value);
                 }
 
                 function getCookie(c_name){
