@@ -54,7 +54,7 @@ input:focus,textarea:focus{outline: none;}
 
 /*******viewFrameWork-body body-addition start**********/
 .viewFrameWork-body .body-addition{position: relative;border-bottom: 1px solid #F3F3F3;}
-.viewFrameWork-body .body-addition .body-top-left{padding-right: 80px;padding-left: 10px;}
+.viewFrameWork-body .body-addition .body-top-left{padding-right: 80px;padding-left: 30px;}
 .viewFrameWork-body .body-addition .body-top-right{width: 80px;position: absolute;top: 0;right: 0;height: 100%;background: #2F7CDB;color: #fff;text-align: center;}
 
 .viewFrameWork-body .body-addition .body-top-left .nav-left{padding-top: 15px;}
