@@ -124,7 +124,7 @@ input:focus,textarea:focus{outline: none;}
 .btn.btn-inactive{border: 1px solid #E0E2E3;color: #E0E2E3;}
 
 /*dropdown-menu*/
-.dropdown-menu.dropdown-inactive{color: #E0E2E3;}
+.dropdown-menu.dropdown-inactive > li > a{color: #E0E2E3;}
 
 /*icons8*/
 i[class*='icons8-']{position: relative;top: 1px;}
