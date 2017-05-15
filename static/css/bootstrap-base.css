@@ -11,8 +11,8 @@ input:focus,textarea:focus{outline: none;}
 
 /*split the frame of the backstadge*/
 .viewFrameWork{position: absolute;width: 100%;top: 0px;bottom: 0px;background-color: #000;z-index: 100;}
-.viewFrameWork .viewFrameWork-sidebar{font-size: 14px;width: 150px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
-.viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 150px;bottom: 0px;right: 0px;overflow: hidden;background: #fff;min-width: 810px;overflow: auto;}
+.viewFrameWork .viewFrameWork-sidebar{font-size: 14px;width: 160px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
+.viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 160px;bottom: 0px;right: 0px;overflow: hidden;background: #fff;min-width: 810px;overflow: auto;}
 
 /*****viewFrameWork-sidebar start*******/
 .viewFrameWork-sidebar .sidebar-top{
