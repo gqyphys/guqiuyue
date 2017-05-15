@@ -11,7 +11,7 @@ input:focus,textarea:focus{outline: none;}
 
 /*split the frame of the backstadge*/
 .viewFrameWork{position: absolute;width: 100%;top: 0px;bottom: 0px;background-color: #000;z-index: 100;}
-.viewFrameWork .viewFrameWork-sidebar{font-size: 14px;width: 160px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #293038;z-index: 102;overflow-x: hidden;}
+.viewFrameWork .viewFrameWork-sidebar{font-size: 14px;width: 160px;display: block;position: fixed;top: 0;bottom: 0px;background-color: #2F323A;z-index: 102;overflow-x: hidden;}
 .viewFrameWork .viewFrameWork-body{width: auto;position: absolute;top: 0px;left: 160px;bottom: 0px;right: 0px;overflow: hidden;background: #fff;min-width: 810px;overflow: auto;}
 
 /*****viewFrameWork-sidebar start*******/
@@ -23,7 +23,7 @@ input:focus,textarea:focus{outline: none;}
 
 .viewFrameWork-sidebar .sidebar-inner{position: relative;}
 .viewFrameWork-sidebar .sidebar-inner .sidebar-fold{
-    height: 40px;width: 100%;line-height: 40px;background: #293038;color: #aeb9c2;text-align: center;cursor: pointer;
+    height: 40px;width: 100%;line-height: 40px;background: #2F323A;color: #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
 
@@ -106,8 +106,8 @@ input:focus,textarea:focus{outline: none;}
 .nav>li>a:focus, .nav>li>a:hover{color: #5d9cec;background-color: inherit;}
 
 /*tooltip*/
-.tooltip.right .tooltip-arrow{border-right-color: #293038;opacity: 0.8;filter: alpha(opacity=80);}
-.tooltip .tooltip-inner{padding: 10px 12px;background-color: #293038;opacity: 0.8;filter: alpha(opacity=80);border-radius: 0;}
+.tooltip.right .tooltip-arrow{border-right-color: #2F323A;opacity: 0.8;filter: alpha(opacity=80);}
+.tooltip .tooltip-inner{padding: 10px 12px;background-color: #2F323A;opacity: 0.8;filter: alpha(opacity=80);border-radius: 0;}
 
 /*progress*/
 .progress{display: inline-block;width: 100px;background-color: #ccc;margin: 0;height: 5px;vertical-align: middle;}
