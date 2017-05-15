@@ -65,7 +65,7 @@ input:focus,textarea:focus{outline: none;}
 .body-top-left .nav-right .nav-state-icon.nav-state-message{width: 60px;text-align: center;font-size: 20px;}
 
 .nav-state-message .state-message-icon{position: relative;color: #2F7CDB;font-size: 24px;}
-.nav-state-message .state-message-count{position: absolute;width: 15px;height: 15px;background-color: #F65177;color: #fff;border-radius: 50%;top: -5px;font-size: 12px;line-height: 12px;font-weight: 800;}
+.nav-state-message .state-message-count{position: absolute;width: 17px;height: 17px;background-color: #F65177;color: #fff;border-radius: 50%;top: -2px;right: -5px;font-size: 9px;line-height: 15px;border: 1px solid #fff;}
 
 
 .viewFrameWork-body .body-addition .body-top-left .body-toolbar{padding-left: 15px;margin-bottom: 15px;}
@@ -130,4 +130,4 @@ input:focus,textarea:focus{outline: none;}
 .dropdown-menu.dropdown-inactive > li > a{color: #E0E2E3;}
 
 /*icons8*/
-i[class*='icons8-']{position: relative;top: 1px;}
+i[class*='icons8-']{position: relative;top: 1px;font-style: initial;}
