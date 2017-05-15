@@ -102,7 +102,7 @@ input:focus,textarea:focus{outline: none;}
 
 /*nav-pills*/
 .nav-pills{font-size: 24px;}
-.nav-pills>li::after{content: "|";color: #979797;;}
+.nav-pills>li::after{content: "";border-right: 1px solid #979797;}
 .nav-pills>li:last-child::after{content: none;}
 .nav-pills>li>a{color: #9698A3;;border-radius: 0;display: inline-block;}
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{color: #2F7CDB;background-color: inherit;border-radius: 0}
