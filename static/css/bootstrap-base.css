@@ -16,10 +16,10 @@ input:focus,textarea:focus{outline: none;}
 
 /*****viewFrameWork-sidebar start*******/
 .viewFrameWork-sidebar .sidebar-top{
-    display: block;height: 60px;width: 100%;background: #fff;color: #aeb9c2;border-right: 1px solid #aeb9c2;text-align: center;cursor: pointer;
+    display: block;height: 97px;width: 100%;background: #fff;color: #aeb9c2;border-right: 1px solid #aeb9c2;text-align: center;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
-.viewFrameWork-sidebar .sidebar-top .icon-logo{line-height: 60px;font-size: 20px;}
+.viewFrameWork-sidebar .sidebar-top .icon-logo{line-height: 97px;font-size: 20px;}
 
 .viewFrameWork-sidebar .sidebar-inner{position: relative;}
 .viewFrameWork-sidebar .sidebar-inner .sidebar-fold{
@@ -31,7 +31,7 @@ input:focus,textarea:focus{outline: none;}
 .sidebar-inner .sidebar-nav ul{width: 100%;margin: 0;padding: 0;list-style: none;overflow-y: scroll;overflow-x: hidden;}
 .sidebar-inner .sidebar-nav li a{display: block;width: 100%;height: 60px;line-height: 60px;overflow: hidden;}
 .sidebar-inner .sidebar-nav li a:hover,.sidebar-inner .sidebar-nav li.active{background: #4A5064;}
-.sidebar-inner .sidebar-nav .nav-icon{width: 60px;text-align: center;font-size: 16px;float: left;color: #fff;}
+.sidebar-inner .sidebar-nav .nav-icon{width: 60px;text-align: center;font-size: 30px;float: left;color: #fff;}
 .sidebar-inner .sidebar-nav .nav-title{float: left;overflow: hidden;color: #fff;white-space: nowrap;text-overflow: ellipsis;display: block;width: 100px;}
 
 .viewFrameWork-sidebar .sidebar-bottom{
