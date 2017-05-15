@@ -69,8 +69,8 @@ input:focus,textarea:focus{outline: none;}
 
 .search-section > *{display: inline-block;margin-right: 10px}
 .search-section .search-section-normal{position: relative;}
-.search-section .search-section-normal .search-section-icon{position: absolute;right: 16px;font-size: 20px;top: 10px;color: #2F7CDB;cursor: pointer;}
-.search-section .search-section-normal .search-section-area{width: 324px;height: 40px;border-radius: 20px;border: 1px solid #D8D8D8;padding: 0 50px 0 123px;}
+.search-section .search-section-normal .search-section-icon{position: absolute;right: 16px;font-size: 20px;top: 6px;color: #2F7CDB;cursor: pointer;}
+.search-section .search-section-normal .search-section-area{width: 324px;height: 40px;border-radius: 20px;border: 1px solid #D8D8D8;padding: 0 50px 0 23px;}
 .search-section .search-section-normal .search-section-area:focus{border-color: #2F7CDB;}
 
 .search-section .search-section-adv{position: relative;}
