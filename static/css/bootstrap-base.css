@@ -44,8 +44,8 @@ input:focus,textarea:focus{outline: none;}
 .viewFrameWork.sidebar-min .viewFrameWork-sidebar{width: 60px;}
 .viewFrameWork.sidebar-min .viewFrameWork-body{left: 60px;}
 .viewFrameWork.sidebar-min .nav-title{display: none;}
-.viewFrameWork.sidebar-min .sidebar-bottom > *{text-align: center;font-size: 14px;line-height: inherit;}
-.viewFrameWork.sidebar-min .sidebar-bottom .sidebar-bottom-title{font-size: 12px;width: 100%;text-align: center;}
+.viewFrameWork.sidebar-min .sidebar-bottom > *{text-align: center;line-height: inherit;}
+.viewFrameWork.sidebar-min .sidebar-bottom .sidebar-bottom-title{width: 100%;text-align: center;}
 /*****viewFrameWork-sidebar end*******/
 
 /*******viewFrameWork-body body-addition start**********/
