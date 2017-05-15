@@ -120,4 +120,4 @@ input:focus,textarea:focus{outline: none;}
 .btn .btn-icon-right{margin-left: 5px;font-size: 16px;}/*icon在button右侧*/
 
 /*icons8*/
-i[class=icons8-*]{position: relative;top: 1px;}
+i[class*='icons8-']{position: relative;top: 1px;}
