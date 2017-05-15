@@ -114,6 +114,10 @@ input:focus,textarea:focus{outline: none;}
 .progress .progress-bar{background-color: #2F7CDB;border-radius: 4px;}
 
 /*button*/
-.btn{padding: 10px 15px;border-radius: 8px;}
+.btn{padding: 10px 15px;border-radius: 8px;line-height: 18px;}
+.btn > *{vertical-align: middle;}
 .btn .btn-icon-left{margin-right: 5px;}/*icon在button左侧*/
 .btn .btn-icon-right{margin-left: 5px;}/*icon在button右侧*/
+
+/*icons8*/
+.icons8- * {position: relative;top: 1px;}
