@@ -35,7 +35,7 @@ input:focus,textarea:focus{outline: none;}
 .sidebar-inner .sidebar-nav .nav-title{float: left;overflow: hidden;color: #fff;white-space: nowrap;text-overflow: ellipsis;display: block;width: 100px;}
 
 .viewFrameWork-sidebar .sidebar-bottom{
-    display: block;height: 80px;width: 100%;position: absolute;bottom: 0;color: #fff;cursor: pointer;
+    display: block;height: 60px;line-height: 60px;width: 100%;position: absolute;bottom: 0;color: #fff;cursor: pointer;
     user-select: none;-webkit-user-select: none;-moz-user-select: none;
 }
 .viewFrameWork-sidebar .sidebar-bottom .sidebar-bottom-icon{width: 60px;float: left;text-align: center;font-size: 30px;}
