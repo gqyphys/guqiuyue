@@ -17,9 +17,9 @@ def recorder():
     return render_template('recorder.html')
 
 
-@app.route('/bootstrap-base/')
+@app.route('/admin-base/')
 def bootstrap_base():
-    return render_template('bootstrap-base.html')
+    return render_template('admin-base.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
