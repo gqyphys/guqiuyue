@@ -1,6 +1,8 @@
 $(function () {
     // initial tooltip
     $('[data-toggle="tooltip"]').tooltip();
+    // initial popover
+    $('[data-toggle="popover"]').popover();
 
     // fold sidebar
     $("#sidebar-fold").click(function(e) {
