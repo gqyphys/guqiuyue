@@ -36,79 +36,8 @@
             <div class="viewFrameWork-body">
                 <div class="body-top body-addition">
                     <div class="body-top-left body-operation">
-                        <div class="body-nav clearfix">
-                            <div class="nav-left nav-tab pull-left">
-                                <ul class="nav nav-pills">
-                                    <li role="presentation" class="active"><a href="#">考生信息</a></li>
-                                    <li role="presentation"><a href="#">注册设置</a></li>
-                                    <li role="presentation"><a href="#">支付设置</a></li>
-                                    <li role="presentation"><a href="#">子管理员</a></li>
-                                </ul>
-                            </div>
-                            <div class="nav-right nav-state pull-right">
-                                <div class="nav-state-icon nav-state-online">
-                                    <span class="state-online-title">实时在线人数</span>
-                                    <span class="state-online-count">120/200</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                            <span class="sr-only">60％</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="nav-state-icon nav-state-message">
-                                    <i class="icons8-settings state-message-icon">
-                                        <span class="state-message-count">1</span>
-                                    </i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="body-toolbar clearfix">
-                            <div class="body-toolbar-left pull-left">
-                                <button type="button" class="btn btn-inactive">
-                                    <i class="icons8-delete btn-icon-left"></i>
-                                    删除
-                                </button>
-                                <!-- Single button -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-inactive dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="icons8-menu btn-icon-left"></i>
-                                        更多
-                                        <span class="caret btn-icon-right"></span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-inactive">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li role="separator" class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="body-toolbar-right pull-right">
-                                <button type="button" class="btn btn-default">
-                                    <i class="icons8-upload btn-icon-left"></i>
-                                    导出信息
-                                </button>
-                                <div class="search-section">
-                                    <div class="search-section-normal">
-                                        <i class="icons8-search search-section-icon"></i>
-                                        <input class="search-section-area" name="" type="text" placeholder="搜索姓名,帐号,手机号..." />
-                                    </div>
-                                    <div class="search-section-adv">
-                                        <span class="dropdown-toggle search-section-adv-title" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                            高级搜索
-                                        </span>
-                                        <div class="dropdown-menu search-section-adv-panel">
-                                            <input name="" class="form-control" />
-                                            <input name="" class="form-control" />
-                                            <input name="" class="form-control" />
-                                            <input name="" class="form-control" />
-                                            <input name="" class="form-control" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% include 'body-nav.html' %}
+                        {% include 'body-toolbar.html' %}
                     </div>
                     <div class="body-top-right body-section-add">
                         <div class="section-add-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
