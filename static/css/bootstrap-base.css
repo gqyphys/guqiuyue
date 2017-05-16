@@ -60,7 +60,7 @@ input:focus,textarea:focus{outline: none;}
 .viewFrameWork-body .body-addition .body-top-left .body-nav{margin-bottom: 10px;}
 .viewFrameWork-body .body-addition .body-top-left .nav-right{line-height: 34px;}
 
-.body-top-left .nav-right .nav-state-icon{display: inline-block;vertical-align: middle;color: #aaa;}
+.body-top-left .nav-right .nav-state-icon{display: inline-block;vertical-align: middle;color: #9B9B9B;}
 .body-top-left .nav-right .nav-state-icon.nav-state-online > *{vertical-align: middle;}
 .body-top-left .nav-right .nav-state-icon.nav-state-message{width: 60px;text-align: center;font-size: 20px;}
 
@@ -115,8 +115,8 @@ input:focus,textarea:focus{outline: none;}
 .tooltip .tooltip-inner{padding: 10px 12px;background-color: #2F323A;opacity: 0.8;filter: alpha(opacity=80);border-radius: 0;}
 
 /*progress*/
-.progress{display: inline-block;width: 100px;background-color: #ccc;margin: 0;height: 5px;vertical-align: middle;}
-.progress .progress-bar{background-color: #2F7CDB;border-radius: 4px;}
+.progress{display: inline-block;width: 90px;background-color: #E1E3E4;margin: 0;height: 6px;vertical-align: middle;}
+.progress .progress-bar{background-color: #2F7CDB;border-radius: 3px;}
 
 /*button*/
 .btn{font-size: 12px;padding: 10px 15px;border-radius: 8px;line-height: 16px;background: #fff;}
