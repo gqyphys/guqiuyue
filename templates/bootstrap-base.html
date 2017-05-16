@@ -35,11 +35,13 @@
             <!-- viewFrameWork-body -->
             <div class="viewFrameWork-body">
                 <div class="body-top body-addition">
+                    {% block addition %}
                     <div class="body-top-left body-operation">
-                        {% include 'body-nav.html' %}
-                        {% include 'body-toolbar.html'%}
+                        {% include 'body-sections/body-nav.html' %}
+                        {% include 'body-sections/body-toolbar.html'%}
                     </div>
-                    {% include 'body-section-add.html' %}
+                    {% include 'body-sections/body-section-add.html' %}
+                    {% endblock %}
                 </div>
                 <div class="body-bottom body-content">
                     {% block content %}{% endblock %}
