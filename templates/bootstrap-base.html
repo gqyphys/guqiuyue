@@ -39,37 +39,7 @@
                         {% include 'body-nav.html' %}
                         {% include 'body-toolbar.html'%}
                     </div>
-                    <div class="body-top-right body-section-add">
-                        <div class="section-add-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="icons8-plus-math section-add-icon"></i>
-                            <span class="section-add-title">添加</span>
-                        </div>
-                        <div class="dropdown-menu section-add-panel">
-                            <div class="section-add-panel-topbar"></div>
-                            <div class="section-add-panel-content">
-                                <ul class="section-add-menu">
-                                    <li class="section-add-menu-list">
-                                        <a href="#">
-                                            <i class="icons8-user-group-man-man section-add-menu-icon icon-user"></i>
-                                            <span class="section-add-menu-title">添加考生</span>
-                                        </a>
-                                    </li>
-                                    <li class="section-add-menu-list">
-                                        <a href="#">
-                                            <i class="icons8-bulleted-list section-add-menu-icon icon-question"></i>
-                                            <span class="section-add-menu-title">添加试题</span>
-                                        </a>
-                                    </li>
-                                    <li class="section-add-menu-list">
-                                        <a href="#">
-                                            <i class="icons8-test-partial-passed section-add-menu-icon icon-exam"></i>
-                                            <span class="section-add-menu-title">创建考试</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    {% include 'body-section-add.html' %}
                 </div>
                 <div class="body-bottom body-content">
                     {% block content %}{% endblock %}
