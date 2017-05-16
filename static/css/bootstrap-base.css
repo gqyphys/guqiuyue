@@ -81,7 +81,8 @@ input:focus,textarea:focus{outline: none;}
 .search-section .search-section-adv .search-section-adv-panel{left: initial;right: 0;padding: 10px;top: calc(100% + 20px);min-width: 250px;}
 
 .body-top-right.body-section-add .section-add-btn{width: 100%;height: 100%;font-size: 12px;cursor: pointer;position: relative;}
-.body-top-right.body-section-add .section-add-icon{position: absolute;font-size: 36px;}
+.body-top-right.body-section-add .section-add-icon{position: absolute;font-size: 36px;top: 20%;width: 100%;left: 0;}
+.body-top-right.body-section-add .section-add-title{display: block;width: 100%;position: absolute;top: 60%;}
 
 .body-top-right.body-section-add .section-add-panel{left: initial;right: 20px;top: calc(100% + 20px);padding: 0px;}
 
