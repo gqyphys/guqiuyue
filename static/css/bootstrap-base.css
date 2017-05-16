@@ -136,3 +136,10 @@ input:focus,textarea:focus{outline: none;}
 
 /*icons8*/
 i[class*='icons8-']{position: relative;top: 1px;font-style: initial;}
+
+/*placeholder*/
+::-webkit-input-placeholder,/* WebKit browsers */
+:-moz-placeholder,/* Mozilla Firefox 4 to 18 */
+::-moz-placeholder,/* Mozilla Firefox 19+ */
+:-ms-input-placeholder/* Internet Explorer 10+ */
+{color: #D8D8D8;}
