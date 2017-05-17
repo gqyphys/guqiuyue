@@ -122,7 +122,7 @@ input:focus,textarea:focus{outline: none;}
 .progress .progress-bar{background-color: #2F7CDB;border-radius: 3px;}
 
 /*button*/
-.btn{font-size: 12px;padding: 10px 15px;border-radius: 8px;line-height: 16px;background: #fff;}
+/*.btn{font-size: 12px;padding: 10px 15px;border-radius: 8px;line-height: 16px;background: #fff;}*/
 /*icon posidtion*/
 .btn .btn-icon-left{margin-right: 5px;font-size: 16px;}/*icon在button左侧*/
 .btn .btn-icon-right{margin-left: 18px;font-size: 16px;}/*icon在button右侧*/
