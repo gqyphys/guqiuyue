@@ -3447,15 +3447,15 @@ output
 .form-control::-moz-placeholder
 {
     opacity: 1;
-    color: #999;
+    color: #d8d8d8;
 }
 .form-control:-ms-input-placeholder
 {
-    color: #999;
+    color: #d8d8d8;
 }
 .form-control::-webkit-input-placeholder
 {
-    color: #999;
+    color: #d8d8d8;
 }
 .form-control::-ms-expand
 {
