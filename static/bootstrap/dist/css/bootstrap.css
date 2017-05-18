@@ -4567,6 +4567,20 @@ fieldset[disabled] .btn-link:focus
 
     border-radius: 3px;
 }
+.btn .btn-icon-left
+{
+    font-size: 16px;
+
+    margin-right: 5px;
+    margin-left: 0;
+}
+.btn .btn-icon-right
+{
+    font-size: 16px;
+
+    margin-right: 0;
+    margin-left: 18px;
+}
 .btn-block
 {
     display: block;
