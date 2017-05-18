@@ -1837,8 +1837,10 @@ a.bg-danger:focus
 ul,
 ol
 {
-    margin-top: 0;
-    margin-bottom: 8.5px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
 }
 ul ul,
 ol ul,
