@@ -126,7 +126,9 @@
         margin-left: 0;
     }
     &:last-child {
-        content: none;
+        &::after{
+            content: none;
+        }
         > a{
         margin-right: 0;
         }
