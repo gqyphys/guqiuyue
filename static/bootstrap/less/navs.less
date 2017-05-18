@@ -125,8 +125,11 @@
     &:first-child > a{
         margin-left: 0;
     }
-    &:last-child > a{
+    &:last-child {
+        content: none;
+        > a{
         margin-right: 0;
+        }
     }
     // Links rendered as pills
     > a {
