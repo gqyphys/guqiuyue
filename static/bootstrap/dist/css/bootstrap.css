@@ -3373,6 +3373,22 @@ input[type='search']
        -moz-box-sizing: border-box;
             box-sizing: border-box;
 }
+input::-moz-placeholder,
+textarea::-moz-placeholder
+{
+    opacity: 1;
+    color: #d8d8d8;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder
+{
+    color: #d8d8d8;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder
+{
+    color: #d8d8d8;
+}
 input[type='radio'],
 input[type='checkbox']
 {
