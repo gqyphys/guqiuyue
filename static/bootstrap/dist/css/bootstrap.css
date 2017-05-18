@@ -4571,15 +4571,15 @@ fieldset[disabled] .btn-link:focus
 {
     font-size: 16px;
 
-    margin-right: 5px;
-    margin-left: 0;
+    margin-right: 5px !important;
+    margin-left: 0 !important;
 }
 .btn .btn-icon-right
 {
     font-size: 16px;
 
-    margin-right: 0;
-    margin-left: 18px;
+    margin-right: 0 !important;
+    margin-left: 18px !important;
 }
 .btn-block
 {
