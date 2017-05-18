@@ -1673,6 +1673,11 @@ p
 {
     margin: 0 0 8.5px;
 }
+a:hover,
+a:focus
+{
+    text-decoration: none;
+}
 .lead
 {
     font-size: 13px;
