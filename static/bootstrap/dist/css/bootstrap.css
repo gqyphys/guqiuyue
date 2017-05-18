@@ -6869,7 +6869,8 @@ a.thumbnail.active
 {
     overflow: hidden;
 
-    height: 17px;
+    width: 90px;
+    height: 6px;
 
     border-radius: 3px;
     background-color: #e1e3e4;
