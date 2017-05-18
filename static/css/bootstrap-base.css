@@ -140,7 +140,7 @@ input:focus,textarea:focus{outline: none;}*/
 i[class*='icons8-']{position: relative;top: 1px;font-style: initial;}
 
 /*placeholder*/
-input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+/*input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 color: #D8D8D8;
 }
 input:-moz-placeholder, textarea:-moz-placeholder {
@@ -151,4 +151,4 @@ color: #D8D8D8;
 }
 input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 color: #D8D8D8;
-}
+}*/
