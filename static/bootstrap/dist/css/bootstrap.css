@@ -4117,13 +4117,13 @@ fieldset[disabled] .btn-default.focus
 {
     color: #e0e2e3;
     border-color: #9da3a6;
-    background-color: #e6e6e6;
+    background-color: #fff;
 }
 .btn-inactive:hover
 {
     color: #e0e2e3;
     border-color: #c0c4c6;
-    background-color: #e6e6e6;
+    background-color: #fff;
 }
 .btn-inactive:active,
 .btn-inactive.active,
@@ -4131,7 +4131,7 @@ fieldset[disabled] .btn-default.focus
 {
     color: #e0e2e3;
     border-color: #c0c4c6;
-    background-color: #e6e6e6;
+    background-color: #fff;
 }
 .btn-inactive:active:hover,
 .btn-inactive.active:hover,
@@ -4145,7 +4145,7 @@ fieldset[disabled] .btn-default.focus
 {
     color: #e0e2e3;
     border-color: #9da3a6;
-    background-color: #d4d4d4;
+    background-color: #fff;
 }
 .btn-inactive:active,
 .btn-inactive.active,
