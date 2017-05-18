@@ -5431,6 +5431,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn
 {
     margin-left: 0;
 }
+.nav-pills > li:last-child
+{
+    content: none;
+}
 .nav-pills > li:last-child > a
 {
     margin-right: 0;
