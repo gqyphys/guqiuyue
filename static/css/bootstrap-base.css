@@ -118,8 +118,9 @@ input:focus,textarea:focus{outline: none;}*/
 .tooltip .tooltip-inner{padding: 10px 12px;background-color: #2F323A;opacity: 0.8;filter: alpha(opacity=80);border-radius: 0;}
 
 /*progress*/
-.progress{display: inline-block;width: 90px;background-color: #E1E3E4;margin: 0;height: 6px;vertical-align: middle;}
-.progress .progress-bar{background-color: #2F7CDB;border-radius: 3px;}
+/*.progress{display: inline-block;width: 90px;background-color: #E1E3E4;margin: 0;height: 6px;vertical-align: middle;}*/
+.progress{display: inline-block;vertical-align: middle;}
+/*.progress .progress-bar{background-color: #2F7CDB;border-radius: 3px;}*/
 
 /*button*/
 /*.btn{font-size: 12px;padding: 10px 15px;border-radius: 8px;line-height: 16px;background: #fff;}*/
