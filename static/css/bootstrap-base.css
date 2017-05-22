@@ -105,11 +105,14 @@ i[class*='icons8-']{position: relative;top: 1px;font-style: initial;}
 
 /*loading*/
 .spinner {
-  margin: 100px auto;
-  width: 50px;
+  margin: 200px auto;
+  width: 20%;
   height: 60px;
   text-align: center;
   font-size: 10px;
+  position: absolute;
+  left: 40%;
+  z-index: 99999;
 }
 
 .spinner > div {
