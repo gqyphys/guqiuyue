@@ -11,14 +11,9 @@
         {% block icon %}
         <link rel="shortcut icon" href="/static/images/favicon.ico" />
         {% endblock %}
-        <link rel="stylesheet/less" type="text/css" href="/static/bootstrap/less/bootstrap.less">
-        <!-- <link rel="stylesheet" type="text/css" href="/static/bootstrap/dist/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/static/IconFont/css/styles.min.css">
         <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-base.css">
-        <script type="text/javascript" src="/static/js/less.min.js"></script>
-        <script>
-                less.modifyVars({'@brand-primary' : '{{ color }}'});
-        </script>
         {% block style %}{% endblock %}
         <script>
             document.addEventListener("DOMContentLoaded", function(event) {
