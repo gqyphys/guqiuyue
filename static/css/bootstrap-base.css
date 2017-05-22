@@ -113,7 +113,7 @@ i[class*='icons8-']{position: relative;top: 1px;font-style: initial;}
 }
 
 .spinner > div {
-  background-color: #67CF22;
+  background-color: #DDD;
   height: 100%;
   width: 6px;
   display: inline-block;
