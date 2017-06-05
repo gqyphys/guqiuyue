@@ -19,7 +19,7 @@ def recorder():
 
 @app.route('/admin-base/')
 def bootstrap_base():
-    return render_template('admin-base.html', color='#ff0000')
+    return render_template('admin-base.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
