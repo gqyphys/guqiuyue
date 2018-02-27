@@ -53,11 +53,11 @@
     $("#button").click(function () {
         $.ajax( {
             type:"post",
-            url:"https://www.kaoshixing.com/api/company/data/1/?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk3MjYxMTU5MjIsImFjdGlvbl9pZCI6IjIwMSJ9.NRMu4hrGPGcS3ENubibSKjZc6_qSYDqwd2Os3b6vNhM",
-            dataType:"json",
+            url:"http://www.kaoshixing.com/api/company/data/1/?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk3MjYxMTU5MjIsImFjdGlvbl9pZCI6IjIwMSJ9.NRMu4hrGPGcS3ENubibSKjZc6_qSYDqwd2Os3b6vNhM",
+            dataType:"jsonp",
             data: {'user_id':'111111', 'user_name':'222222', 'role':'staff', 'department':'总部'},
             success:function(msg){
-                
+
             }
         });
 
