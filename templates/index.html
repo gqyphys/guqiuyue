@@ -41,19 +41,26 @@
 
 {% block body %}
     {{ super() }}
-    <div class="" style="">
-        <iframe src='https://view.officeapps.live.com/op/embed.aspx?src=http://cdn.oss.kaoshixing.com/database/1/2017412/112813673355.docx' width='476px' height='288px' frameborder='0'>
-            这是嵌入 <a target='_blank' href='https://office.com'>Microsoft Office</a> 文档，由 <a target='_blank' href='https://office.com/webapps'>Office Online</a> 支持。
-        </iframe>
-    </div>
 
-    <!-- <div class="container">
-        <h1><span class="basic">Basic demo of</span><span class="project-name">FlashPlayer</span></h1>
-        <div class=""></div>
-    </div> -->
+    <div class="container">
+        <button class="btn btn-primary" id="button">click</button>
+    </div>
 {% endblock %}
 
 {% block script %}
 {{ super() }}
-<!-- <script type="text/javascript" src="/static/js/swfobject.js"></script> -->
+<script>
+    $("#button").click(function () {
+        $.ajax( {
+            type:"post",
+            url:"https://www.kaoshixing.com/api/company/data/1/?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk3MjYxMTU5MjIsImFjdGlvbl9pZCI6IjIwMSJ9.NRMu4hrGPGcS3ENubibSKjZc6_qSYDqwd2Os3b6vNhM",
+            dataType:"json",
+            data: {'user_id':'111111', 'user_name':'222222', 'role':'staff', 'department':'总部'},
+            success:function(msg){
+                
+            }
+        });
+
+    });
+</script>
 {% endblock %}
