@@ -4,37 +4,13 @@
 {{ super() }}
 <style>
 
-    /* Styles for recorder buttons */
-    .recorder button, .recorder .upload, .level {
-        border: 1px solid #686868;
-        height: 30px;
-        background-color: white;
-        display: inline-block;
-        vertical-align: bottom;
-        margin: 2px;
-        box-sizing: border-box;
-        border-radius: 4px;
-    }
-
-    /* Styles for level indicator - required! */
-    .level {
-        width: 30px;
-        height: 30px;
-        position: relative;
-    }
-    .progress {
-        position: absolute;
-        height: 0;
-        margin: 0;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: #b10000;
-    }
-    .upload {
-        padding-top: 2px;
-    }
-
+#page { width: 520px; }
+.nav  { width: 200px; float: right; }
+.main { width: 200px; float: left; padding-left: 110px; }
+.sub  { width: 100px; float: left; margin: 10px 0 10px -100px; }
+.main { border: 1px solid #000; }
+.nav, .sub { border: 1px dashed #000; height: 300px; }
+.sub { height: 280px; }
 </style>
 
 {% endblock %}
@@ -43,7 +19,13 @@
     {{ super() }}
 
     <div class="container">
-        <button class="btn btn-primary" id="button">click</button>
+        <div id="page">
+            <div class="main">
+            <div class="sub"></div>
+        </div>
+        <div class="nav"></div>
+</div>
+
     </div>
 {% endblock %}
 
@@ -53,11 +35,16 @@
     $("#button").click(function () {
         $.ajax( {
             type:"post",
-            url:"http://www.kaoshixing.com/api/company/data/1/?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk3MjYxMTU5MjIsImFjdGlvbl9pZCI6IjIwMSJ9.NRMu4hrGPGcS3ENubibSKjZc6_qSYDqwd2Os3b6vNhM",
+            url:"https://www.kaoshixing.com/api/company/data/1/?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTk3MjYxMTU5MjIsImFjdGlvbl9pZCI6IjIwMSJ9.NRMu4hrGPGcS3ENubibSKjZc6_qSYDqwd2Os3b6vNhM",
             dataType:"jsonp",
-            data: {'user_id':'111111', 'user_name':'222222', 'role':'staff', 'department':'总部'},
+            jsonp : "callback", //配置jsonp随机码标签,在服务器代码部分需要用到他来拼接一个json的js对象
+            data: JSON.stringify({'user_id':'111111', 'user_name':'222222', 'role':'staff', 'department':'总部'}),
+            async : false,
             success:function(msg){
 
+            },
+            error : function (){
+                alert('服务器异常！');
             }
         });
 
