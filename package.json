@@ -1,0 +1,26 @@
+{
+  "name": "templete",
+  "version": "1.0.0",
+  "description": "provide free templetes",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gqyphys/guqiuyue.git"
+  },
+  "keywords": [
+    "free",
+    "guqiuyue"
+  ],
+  "author": "guqiuyue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gqyphys/guqiuyue/issues"
+  },
+  "homepage": "https://github.com/gqyphys/guqiuyue#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
